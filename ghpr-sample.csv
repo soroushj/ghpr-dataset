@@ -1,5 +1,5 @@
-issue_number,issue_title,issue_body_md,issue_body_plain,issue_created_at,issue_author_id,issue_author_association,issue_label_ids,pull_number,pull_created_at,pull_merged_at,pull_comments,pull_review_comments,pull_commits,pull_additions,pull_deletions,pull_changed_files
-79,make chanotify to work with interface{} keys,"It a lot useful to have interface{} keys rather than string keys in Add. It allows users to export a symbol and use it as an identifier without worrying about the uniqueness.
+repo_id,issue_number,issue_title,issue_body_md,issue_body_plain,issue_created_at,issue_author_id,issue_author_association,issue_label_ids,pull_number,pull_created_at,pull_merged_at,pull_comments,pull_review_comments,pull_commits,pull_additions,pull_deletions,pull_changed_files
+46089560,79,make chanotify to work with interface{} keys,"It a lot useful to have interface{} keys rather than string keys in Add. It allows users to export a symbol and use it as an identifier without worrying about the uniqueness.
 
 ``` go
 package a
@@ -33,13 +33,13 @@ Key from the a namespace will be guaranteed to be unique. We use a similar patte
 go
 - func (s *Notifier) Add(ch <-chan struct{}, id string) 
 + func (s *Notifier) Add(ch <-chan struct{}, id interface{})",1453360028,108380,1,,83,1453479382,1453489370,2,0,2,32,32,4
-75,Expand relative paths given to `ctr containers start`,"Specifying a relative path to `ctr containers start` results in a file not found error. It would be more user-friendly for the client to expand the path to an absolute path based on the CWD if necessary.
+46089560,75,Expand relative paths given to `ctr containers start`,"Specifying a relative path to `ctr containers start` results in a file not found error. It would be more user-friendly for the client to expand the path to an absolute path based on the CWD if necessary.
 ",Specifying a relative path to ctr containers start results in a file not found error. It would be more user-friendly for the client to expand the path to an absolute path based on the CWD if necessary.,1452904148,10601430,1,,91,1453780091,1453932760,3,0,1,6,2,1
-76,Systemusage and memory.limit not in stats,"When comparing stats types with the ones provided in https://github.com/docker/engine-api/blob/master/types/stats.go `CPUStats.SystemUsage` and `MemoryStats.Limit` seem to be missing.
+46089560,76,Systemusage and memory.limit not in stats,"When comparing stats types with the ones provided in https://github.com/docker/engine-api/blob/master/types/stats.go `CPUStats.SystemUsage` and `MemoryStats.Limit` seem to be missing.
 ",When comparing stats types with the ones provided in https://github.com/docker/engine-api/blob/master/types/stats.go CPUStats.SystemUsage and MemoryStats.Limit seem to be missing.,1453154474,585223,1,,99,1454540162,1456251342,1,0,1,180,98,3
-76,Systemusage and memory.limit not in stats,"When comparing stats types with the ones provided in https://github.com/docker/engine-api/blob/master/types/stats.go `CPUStats.SystemUsage` and `MemoryStats.Limit` seem to be missing.
+46089560,76,Systemusage and memory.limit not in stats,"When comparing stats types with the ones provided in https://github.com/docker/engine-api/blob/master/types/stats.go `CPUStats.SystemUsage` and `MemoryStats.Limit` seem to be missing.
 ",When comparing stats types with the ones provided in https://github.com/docker/engine-api/blob/master/types/stats.go CPUStats.SystemUsage and MemoryStats.Limit seem to be missing.,1453154474,585223,1,,100,1454543289,1456253825,4,0,2,130,118,3
-50,"Add types.EventType, use in supervisor package","This is re: additional suggestions for https://github.com/docker/containerd/pull/48 - I wanted to send one or two in smaller CLs to give you a little flavor of what I'm talking about.
+46089560,50,"Add types.EventType, use in supervisor package","This is re: additional suggestions for https://github.com/docker/containerd/pull/48 - I wanted to send one or two in smaller CLs to give you a little flavor of what I'm talking about.
 
 Overall, I would think to use the messages in api/types as the base data type for supervisor. Using protobuf generated messages as DTOs is a general big win for consistency, and it forces a programming style that can lead to less bugs down the road. As an example here, instead of having `type EventType string`, we've used protobuf to generate an `int32` enum for us. By being an int instead of a string, developers are almost forced to use actual enum const values as opposed to freeform strings, the latter of which can lead to types in the codebase that are not tracked as consts (https://github.com/docker/containerd/blob/1d63236c2711e1f9567792daa9f81f263229075c/api/grpc/server/server.go#L234 and https://github.com/docker/containerd/blob/1d63236c2711e1f9567792daa9f81f263229075c/api/grpc/server/server.go#L241).
 
@@ -47,16 +47,16 @@ Let me know what you think.
 ","This is re: additional suggestions for https://github.com/docker/containerd/pull/48 - I wanted to send one or two in smaller CLs to give you a little flavor of what I'm talking about.
 Overall, I would think to use the messages in api/types as the base data type for supervisor. Using protobuf generated messages as DTOs is a general big win for consistency, and it forces a programming style that can lead to less bugs down the road. As an example here, instead of having type EventType string, we've used protobuf to generate an int32 enum for us. By being an int instead of a string, developers are almost forced to use actual enum const values as opposed to freeform strings, the latter of which can lead to types in the codebase that are not tracked as consts (https://github.com/docker/containerd/blob/1d63236c2711e1f9567792daa9f81f263229075c/api/grpc/server/server.go#L234 and https://github.com/docker/containerd/blob/1d63236c2711e1f9567792daa9f81f263229075c/api/grpc/server/server.go#L241).
 Let me know what you think.",1450442403,4228796,1,,106,1455744556,1456167761,4,8,1,265,359,15
-113,Switch to the new vendor directory layout,"Forking the discussion from https://github.com/docker/containerd/pull/111#issuecomment-188981270...
+46089560,113,Switch to the new vendor directory layout,"Forking the discussion from https://github.com/docker/containerd/pull/111#issuecomment-188981270...
 
 We need to checkout the dependencies to the /vendor directory, not /vendor/src. The go tool can recognize the vendored packages and import them from /vendor rather than their canonical GOPATH location.
 ","Forking the discussion from https://github.com/docker/containerd/pull/111#issuecomment-188981270...
 We need to checkout the dependencies to the /vendor directory, not /vendor/src. The go tool can recognize the vendored packages and import them from /vendor rather than their canonical GOPATH location.",1456439538,108380,1,,132,1458104013,1458171841,9,0,2,12,10,807
-165,ctr: inability to connect to grpc causes hang,"If you run `ctr` commands without sufficient privileges to connect to the `grpc` socket, the command will _not_ fail. It will just hang indefinitely. It should error out instead.
+46089560,165,ctr: inability to connect to grpc causes hang,"If you run `ctr` commands without sufficient privileges to connect to the `grpc` socket, the command will _not_ fail. It will just hang indefinitely. It should error out instead.
 ","If you run ctr commands without sufficient privileges to connect to the grpc socket, the command will not fail. It will just hang indefinitely. It should error out instead.",1459143666,2888411,1,,166,1459185036,1459185831,4,0,2,8,1,3
-164,add socket activation,"In order to package containerd properly with systemd, containerd should have support for socket activation (similar to how Docker has socket activation).
+46089560,164,add socket activation,"In order to package containerd properly with systemd, containerd should have support for socket activation (similar to how Docker has socket activation).
 ","In order to package containerd properly with systemd, containerd should have support for socket activation (similar to how Docker has socket activation).",1459118679,2888411,1,,178,1459394868,1461354755,14,4,4,3207,39,41
-193,Issues building on ppc64le and i586 (gcc-go).,"When trying to build on `master` (which you can see in [this OBS repo](https://build.opensuse.org/package/show/Virtualization:containers:experimental/containerd)), you get the following error:
+46089560,193,Issues building on ppc64le and i586 (gcc-go).,"When trying to build on `master` (which you can see in [this OBS repo](https://build.opensuse.org/package/show/Virtualization:containers:experimental/containerd)), you get the following error:
 
 ```
 % go-5 build '-gccgoflags=-Wl,--add-needed -Wl,--no-as-needed -static-libgo -ldl' -x -o containerd-0.1.0+git389483d github.com/docker/containerd/containerd
@@ -68,7 +68,7 @@ This doesn't happen on `0.1.0`, so it's clearly a regression. I can't figure out
 % go-5 build '-gccgoflags=-Wl,--add-needed -Wl,--no-as-needed -static-libgo -ldl' -x -o containerd-0.1.0+git389483d github.com/docker/containerd/containerd
 vendor/src/github.com/docker/containerd/supervisor/monitor_linux.go:8:2: no buildable Go source files in /home/abuild/rpmbuild/BUILD/containerd-git.389483d/vendor/src/github.com/docker/containerd/archutils
 This doesn't happen on 0.1.0, so it's clearly a regression. I can't figure out why it's failing, because both of the files in archutils should work properly.",1460456873,2888411,1,,194,1460526804,1460527110,2,0,1,0,0,1
-193,Issues building on ppc64le and i586 (gcc-go).,"When trying to build on `master` (which you can see in [this OBS repo](https://build.opensuse.org/package/show/Virtualization:containers:experimental/containerd)), you get the following error:
+46089560,193,Issues building on ppc64le and i586 (gcc-go).,"When trying to build on `master` (which you can see in [this OBS repo](https://build.opensuse.org/package/show/Virtualization:containers:experimental/containerd)), you get the following error:
 
 ```
 % go-5 build '-gccgoflags=-Wl,--add-needed -Wl,--no-as-needed -static-libgo -ldl' -x -o containerd-0.1.0+git389483d github.com/docker/containerd/containerd
@@ -80,7 +80,7 @@ This doesn't happen on `0.1.0`, so it's clearly a regression. I can't figure out
 % go-5 build '-gccgoflags=-Wl,--add-needed -Wl,--no-as-needed -static-libgo -ldl' -x -o containerd-0.1.0+git389483d github.com/docker/containerd/containerd
 vendor/src/github.com/docker/containerd/supervisor/monitor_linux.go:8:2: no buildable Go source files in /home/abuild/rpmbuild/BUILD/containerd-git.389483d/vendor/src/github.com/docker/containerd/archutils
 This doesn't happen on 0.1.0, so it's clearly a regression. I can't figure out why it's failing, because both of the files in archutils should work properly.",1460456873,2888411,1,,195,1460540760,1461002055,8,1,2,22,21,2
-211,daemon option selinux-enabled=true leads to permission denied on /dev in a container on a rhel7.2 selinux system,"I installed docker 1.11 on a hardened rhel7.2 system with selinux in enforcing mode. When I add the option `selinux-enabled=true` to the docker daemon and run a container I can't get access to `/dev` (and probably other problems.
+46089560,211,daemon option selinux-enabled=true leads to permission denied on /dev in a container on a rhel7.2 selinux system,"I installed docker 1.11 on a hardened rhel7.2 system with selinux in enforcing mode. When I add the option `selinux-enabled=true` to the docker daemon and run a container I can't get access to `/dev` (and probably other problems.
 
 How to reproduce:
 - install as mentioned
@@ -141,7 +141,7 @@ I created this issue on the containerd repository because containerd is the pare
 To me it seems that either the docker-engine-selinux policy file should be changed or the transitioning to svirt_lcx_net_t should not be done?
 regards,
 Rick",1461155672,3867935,6,,232,1462387083,1462387414,1,0,1,19,8,5
-239,"make test executes ""all"" target and rebuilds everything","Hi,
+46089560,239,"make test executes ""all"" target and rebuilds everything","Hi,
 
 First, I'm no Makefile expert so I might miss something here.
 
@@ -155,12 +155,12 @@ First, I'm no Makefile expert so I might miss something here.
 When I execute make test, it rebuilds everything. My use case is that my package manager differentiate compilation from tests and executes both (make and then make test). The binary compilation happens twice which is kinda a waste of time.
 I wanted to know if that's normal or if that's something that can be improved (and how ?).
 Thanks !",1462968460,6098160,6,,241,1463165168,1463525688,1,0,2,3,1,2
-260,UpdateResource integer fields should be 64bits long,"The integer types are all `uint32` atm (see [here](https://github.com/docker/containerd/blob/16a8dfe6a8f711532b72226173cb66af7a9b2522/api/grpc/types/api.proto#L191-203)), limiting available range on `64bits` platforms.
+46089560,260,UpdateResource integer fields should be 64bits long,"The integer types are all `uint32` atm (see [here](https://github.com/docker/containerd/blob/16a8dfe6a8f711532b72226173cb66af7a9b2522/api/grpc/types/api.proto#L191-203)), limiting available range on `64bits` platforms.
 
 This will be a breaking API change though
 ","The integer types are all uint32 atm (see here), limiting available range on 64bits platforms.
 This will be a breaking API change though",1465320394,16065150,1,,265,1465677893,1465840752,3,0,1,200,187,3
-275,File descriptor leak on init/control,"Running docker 1.11, we found a file-descriptor leak.  Some or all (unclear) terminated containers leave behind and open fd in container for `/run/containerd/.../init/control`
+46089560,275,File descriptor leak on init/control,"Running docker 1.11, we found a file-descriptor leak.  Some or all (unclear) terminated containers leave behind and open fd in container for `/run/containerd/.../init/control`
 
 ```
 # ls -l /proc/*/fd/ | grep deleted
@@ -200,7 +200,7 @@ lrwx------ 1 root root 64 Jun 28 01:00 86 -> /run/containerd/7c092b5da7353659597
 lrwx------ 1 root root 64 Jun 28 01:00 87 -> /run/containerd/a49e4727a6ed4b68db0cf686a04c95597921b91ab230b632c36b9004dcda1d11/init/control (deleted)
 ```
 @dchen1107",1467075714,5595220,6,,276,1467097885,1467743107,2,3,1,5,1,1
-310,Killing restored redis container leaves bad state,"I created a redis container (from current master), checkpointed it (and exited), then restored from that checkpoint, and tried to kill the new container. The kill reports no errors, but subsequently listing containers reports this error:
+46089560,310,Killing restored redis container leaves bad state,"I created a redis container (from current master), checkpointed it (and exited), then restored from that checkpoint, and tried to kill the new container. The kill reports no errors, but subsequently listing containers reports this error:
 
 ```
 [ctr] rpc error: code = 13 desc = get all pids for container: exit status 1: ""open /run/runc/red-restore-test/state.json: no such file or directory\n""
@@ -238,7 +238,7 @@ $ ctr containers
 ```
 Running ps you can see that the redis process has been killed, but a containerd-shim process is left running still.
 If you manually kill the running containerd-shim process, containerd correctly cleans up the state and listing containers works again.",1472567567,22065,1,,312,1473185664,1473265597,1,0,1,1,0,1
-318,use uint32 for process exit status,"Currently, the event code has a duplicated `Event` type defined that slightly differs from the one used by the grpc api: it has `Status int` instead of `Status uint32`
+46089560,318,use uint32 for process exit status,"Currently, the event code has a duplicated `Event` type defined that slightly differs from the one used by the grpc api: it has `Status int` instead of `Status uint32`
 
 We should sync the 2 structs to avoid  `-1` values becoming `4294967295`
 
@@ -246,18 +246,18 @@ Using `types.Event` directly is a bit annoying giving that it is using a `protob
 ","Currently, the event code has a duplicated Event type defined that slightly differs from the one used by the grpc api: it has Status int instead of Status uint32
 We should sync the 2 structs to avoid  -1 values becoming 4294967295
 Using types.Event directly is a bit annoying giving that it is using a protobuf.timestamp type. This would require extra conversion that could possibly fail. Atm this conversion is only needed in one place. ",1474308955,16065150,1,,319,1474311712,1474316195,1,0,1,26,20,6
-344,Fix the error check in Delete method,"we should check the `derr` at here, not the `err`.
+46089560,344,Fix the error check in Delete method,"we should check the `derr` at here, not the `err`.
 
 Signed-off-by: Wang Long <long.wanglong@huawei.com>","we should check the derr at here, not the err.
 Signed-off-by: Wang Long long.wanglong@huawei.com",1478589303,1785993,1,,354,1479407071,1479421475,1,0,1,1,1,1
-356,ctr /tmp is full,"I use `ctr containers exec` to start a process in a running container. When the process is exited it leaves a directory in /tmp named ctr-* . Inside there are some named pipes for stdin, stdout and stderr.
+46089560,356,ctr /tmp is full,"I use `ctr containers exec` to start a process in a running container. When the process is exited it leaves a directory in /tmp named ctr-* . Inside there are some named pipes for stdin, stdout and stderr.
 
 If you start a lot of process /tmp can easily be full with these files and the system can be unstable. I'm trying to find a workaround to delete these from my scripts, but I can't be sure which directory is created by which process.
 
 I have ""ctr version 0.2.2 commit: v0.2.2"".","I use ctr containers exec to start a process in a running container. When the process is exited it leaves a directory in /tmp named ctr-* . Inside there are some named pipes for stdin, stdout and stderr.
 If you start a lot of process /tmp can easily be full with these files and the system can be unstable. I'm trying to find a workaround to delete these from my scripts, but I can't be sure which directory is created by which process.
 I have ""ctr version 0.2.2 commit: v0.2.2"".",1479974866,3075945,6,,358,1480350552,1480356185,1,0,1,11,11,1
-381,master branch unusable w/o vendors,"trying to build containerd getting vendors with `go get -d ./...` is practically unusable. On Fedora 25 I'm also getting weird btrfs failures tied probably to a specific btrfs-progs-devel library:
+46089560,381,master branch unusable w/o vendors,"trying to build containerd getting vendors with `go get -d ./...` is practically unusable. On Fedora 25 I'm also getting weird btrfs failures tied probably to a specific btrfs-progs-devel library:
 ```
 $ make build
 🐳 build
@@ -324,7 +324,7 @@ github.com/stevvooe/go-btrfs
 Makefile:84: recipe for target 'build' failed
 make: *** [build] Error 2
 ```",1481844092,849915,1,,390,1481907988,1484173017,25,7,2,113563,1,408
-416,busybox shell container does not exit with ^D (but exits with `exit`),"When I type `exit` in a busybox shell container, it exits as expected, and the exit event can be received via `ctr events`.
+46089560,416,busybox shell container does not exit with ^D (but exits with `exit`),"When I type `exit` in a busybox shell container, it exits as expected, and the exit event can be received via `ctr events`.
 
 ```console
 $ sudo ctr --debug run --tty -b ~/tmp/busybox foo
@@ -348,11 +348,11 @@ containerd version: master plus some vendoring ( https://github.com/docker/conta
 runc version: 1.0.0-rc2
 OCI bundle: created as described in https://github.com/opencontainers/runc#creating-an-oci-bundle
 ",1484210879,9248427,5,,418,1484249956,1484250704,1,0,1,17,0,1
-383,Request for doc: process lifetime and relationship to containers,"I think we need a really clear doc that details which processes in a containerd system run as literal daemons, what those daemons are responsible for, how they communicate with each other, and what happens when they crash.
+46089560,383,Request for doc: process lifetime and relationship to containers,"I think we need a really clear doc that details which processes in a containerd system run as literal daemons, what those daemons are responsible for, how they communicate with each other, and what happens when they crash.
 
 For example, which process holds the stdin/stdout FDs open?  What happens if containerd crashes?  How insulated are my containers lifetimes from the containerd system?","I think we need a really clear doc that details which processes in a containerd system run as literal daemons, what those daemons are responsible for, how they communicate with each other, and what happens when they crash.
 For example, which process holds the stdin/stdout FDs open?  What happens if containerd crashes?  How insulated are my containers lifetimes from the containerd system?",1481860969,5595220,6,347599654,437,1484682241,1485547434,2,7,1,14,0,1
-420,Makefile: allow `make install` without `go`,"In my environment, `sudo make install` fails, because Go is installed under my home directory.
+46089560,420,Makefile: allow `make install` without `go`,"In my environment, `sudo make install` fails, because Go is installed under my home directory.
 
 ```console
 suda@ws01:~/gopath/src/github.com/docker/containerd> which go
@@ -391,11 +391,11 @@ Makefile:99: recipe for target 'bin/ctr' failed
 make: *** [bin/ctr] Error 1
 So I suggest allowing make install without requiring Go.
 Signed-off-by: Akihiro Suda suda.akihiro@lab.ntt.co.jp",1484279861,9248427,5,,450,1484853105,1484853476,2,0,2,2,2,1
-364,Make dump stack great,"https://github.com/docker/containerd/blob/master/cmd/containerd/main.go#L187
+46089560,364,Make dump stack great,"https://github.com/docker/containerd/blob/master/cmd/containerd/main.go#L187
 
 This provides useful information but the output is horrible and needs to be processed to make it able to be read.  Lets find a way to output this in either a machine parse-able format or human readable because right now its either. ","https://github.com/docker/containerd/blob/master/cmd/containerd/main.go#L187
 This provides useful information but the output is horrible and needs to be processed to make it able to be read.  Lets find a way to output this in either a machine parse-able format or human readable because right now its either. ",1481750063,749551,5,,497,1486443208,1486758025,8,12,1,182,0,2
-466,add timestamps to upstart logs and remove color,"This request is very similar to what was done with docker with the ""--raw-logs"" flag in this ticket https://github.com/docker/docker/pull/18621.
+46089560,466,add timestamps to upstart logs and remove color,"This request is very similar to what was done with docker with the ""--raw-logs"" flag in this ticket https://github.com/docker/docker/pull/18621.
 
 When you look at the logs (/var/log/upstart/docker.log) in less you see
 ```
@@ -492,14 +492,14 @@ Registry: https://index.docker.io/v1/
 WARNING: No swap limit support
 Insecure Registries:
  127.0.0.0/8",1485295778,10733892,6,500316785,517,1486769049,1486770629,1,0,1,489,137,17
-490,Optional shim w/ design proposal,"Now it probably doesn't come as a surprise, but I'm not the biggest fan of the shim.  I (think I) know it's technical purpose, but have use cases where I'd rather not run it.  From what I know the shim serves two purposes.  1) detach and reattach to I/O  2) record the exit status.  I'd like it if the shim was optional.  If I don't need those capabilities it shouldn't be launched (opt out in the API somehow).  So I was thinking about that and considering that maybe `Create` shouldn't be an API of the shim.  That `Create` should just be forking the shim.  The reason I say that is somewhere in containerd when it starts the container it will need to start the shim and then use gprc API to create the process.  Same with exec.  If the shim was optional them you'd have to have two code flows for the create, start, and exec and probably others.
+46089560,490,Optional shim w/ design proposal,"Now it probably doesn't come as a surprise, but I'm not the biggest fan of the shim.  I (think I) know it's technical purpose, but have use cases where I'd rather not run it.  From what I know the shim serves two purposes.  1) detach and reattach to I/O  2) record the exit status.  I'd like it if the shim was optional.  If I don't need those capabilities it shouldn't be launched (opt out in the API somehow).  So I was thinking about that and considering that maybe `Create` shouldn't be an API of the shim.  That `Create` should just be forking the shim.  The reason I say that is somewhere in containerd when it starts the container it will need to start the shim and then use gprc API to create the process.  Same with exec.  If the shim was optional them you'd have to have two code flows for the create, start, and exec and probably others.
 
 Maybe it would make more sense if the shim was just a runc wrapper so that `shim create/start/exec` had the same invocation pattern as `runc create/start/exec`.  Then the grpc API would only be used to access the capabilities that the shim provides (mainly the interacting with I/O).
 
 Or not :)  I don't care about the design, just if the shim was optional that would be great.","Now it probably doesn't come as a surprise, but I'm not the biggest fan of the shim.  I (think I) know it's technical purpose, but have use cases where I'd rather not run it.  From what I know the shim serves two purposes.  1) detach and reattach to I/O  2) record the exit status.  I'd like it if the shim was optional.  If I don't need those capabilities it shouldn't be launched (opt out in the API somehow).  So I was thinking about that and considering that maybe Create shouldn't be an API of the shim.  That Create should just be forking the shim.  The reason I say that is somewhere in containerd when it starts the container it will need to start the shim and then use gprc API to create the process.  Same with exec.  If the shim was optional them you'd have to have two code flows for the create, start, and exec and probably others.
 Maybe it would make more sense if the shim was just a runc wrapper so that shim create/start/exec had the same invocation pattern as runc create/start/exec.  Then the grpc API would only be used to access the capabilities that the shim provides (mainly the interacting with I/O).
 Or not :)  I don't care about the design, just if the shim was optional that would be great.",1486244415,1754002,1,,619,1489188745,1490215744,1,0,1,199,78,9
-625,Failure to create unix listen socket on startup,"There is a startup  issue on the docker-1.13.x branch after commit 595e75c212d19a81d2b808a518fe1afc1391dad5
+46089560,625,Failure to create unix listen socket on startup,"There is a startup  issue on the docker-1.13.x branch after commit 595e75c212d19a81d2b808a518fe1afc1391dad5
 
 With a /run directory cleared by a reboot:
 
@@ -513,14 +513,14 @@ With a /run directory cleared by a reboot:
 / # /usr/bin/containerd
 FATA[0000] can't create unix socket /run/containerd/containerd.sock: listen unix /run/containerd/containerd.sock: bind: no such file or directory
 Doing a mkdir /run/containerd before starting containerd fixes the problem. ",1489537432,11239090,6,500316785,626,1489550409,1489589746,0,0,1,5,4,2
-641,Change shim Exec rpc to take Any for spec values ,The shim's `Exec` rpc should mirror the create RPCs for the `Any` type instead of mirroring all the spec fields. ,The shim's Exec rpc should mirror the create RPCs for the Any type instead of mirroring all the spec fields. ,1490033567,749551,5,,647,1490136564,1490140985,3,3,1,115,496,4
-683,Add CNCF Code of Conduct,"Now that containerd is a CNCF project, it should follow its code of conduct.
+46089560,641,Change shim Exec rpc to take Any for spec values ,The shim's `Exec` rpc should mirror the create RPCs for the `Any` type instead of mirroring all the spec fields. ,The shim's Exec rpc should mirror the create RPCs for the Any type instead of mirroring all the spec fields. ,1490033567,749551,5,,647,1490136564,1490140985,3,3,1,115,496,4
+46089560,683,Add CNCF Code of Conduct,"Now that containerd is a CNCF project, it should follow its code of conduct.
 
 I suggest copying this:
 https://github.com/kubernetes/kubernetes/blob/master/code-of-conduct.md","Now that containerd is a CNCF project, it should follow its code of conduct.
 I suggest copying this:
 https://github.com/kubernetes/kubernetes/blob/master/code-of-conduct.md",1491252860,63777,1,,685,1491324133,1491324588,3,0,1,3,0,1
-691,Do we need a `CloseStdin` or `UpdateProcess` API?,"Forked from https://github.com/containerd/containerd/pull/661.
+46089560,691,Do we need a `CloseStdin` or `UpdateProcess` API?,"Forked from https://github.com/containerd/containerd/pull/661.
 
 Both Docker and Kubernetes support [`StdinOnce`](https://docs.docker.com/engine/api/v1.26/#). The expected behavior of `StdinOnce` is *close stdin after the 1 attached client disconnects*.
 
@@ -537,7 +537,7 @@ It would be better to support this because:
 2) Some users do have use cases.
 However, currently containerd doesn't support this because we could only completely disable stdin or keep stdin open forever. To implement StdinOnce, we may need to support ""close stdin"".
 The API could be a separate CloseStdin, or part of UpdateProcess, which we do have in 0.2.x branch. And if we really add UpdateProcess, we may want to combine Pty with it as we are doing in the old branch. :)",1491350526,5821883,5,,702,1491513847,1491849510,13,0,1,995,195,15
-667,What happens if containerd-shim is killed/dead?,"What will happen if containerd-shim is killed/dead?
+46089560,667,What happens if containerd-shim is killed/dead?,"What will happen if containerd-shim is killed/dead?
 
 Based on the current implementation, things will be messed up, and the runc container will be left there.
 
@@ -547,8 +547,8 @@ Does this mean that the client must periodically list containers to drive the cl
 Based on the current implementation, things will be messed up, and the runc container will be left there.
 Based on the TODO, the corresponding container will be cleaned up in next container list.
 Does this mean that the client must periodically list containers to drive the cleanup? This is fine, but just want to know the expected behavior.",1490831346,5821883,5,,705,1491528249,1491601327,4,5,1,53,8,4
-709,containerd --config default causes confusion,"As discussed in https://github.com/containerd/containerd/pull/693#issuecomment-292252649 , this config causes confusion, it's not consistent with other `--config` values, maybe we should consider an alternative way to fulfill the requirement which introduced this functionality in the first place. @crosbymichael @vbatts ","As discussed in https://github.com/containerd/containerd/pull/693#issuecomment-292252649 , this config causes confusion, it's not consistent with other --config values, maybe we should consider an alternative way to fulfill the requirement which introduced this functionality in the first place. @crosbymichael @vbatts ",1491789929,6415670,1,,711,1491848235,1491854591,6,4,2,20,26,2
-664,`dist get` output mismatch with description.,"```
+46089560,709,containerd --config default causes confusion,"As discussed in https://github.com/containerd/containerd/pull/693#issuecomment-292252649 , this config causes confusion, it's not consistent with other `--config` values, maybe we should consider an alternative way to fulfill the requirement which introduced this functionality in the first place. @crosbymichael @vbatts ","As discussed in https://github.com/containerd/containerd/pull/693#issuecomment-292252649 , this config causes confusion, it's not consistent with other --config values, maybe we should consider an alternative way to fulfill the requirement which introduced this functionality in the first place. @crosbymichael @vbatts ",1491789929,6415670,1,,711,1491848235,1491854591,6,4,2,20,26,2
+46089560,664,`dist get` output mismatch with description.,"```
 $ dist get --help
 <snip..>
 DESCRIPTION:
@@ -778,8 +778,8 @@ che::srcpkgcache \""\"";' \u003e\u003e /etc/apt/apt.conf.d/docker-clean \t\t\u00
                 ]
         }
 }%",1490581836,2758433,1,,721,1491961629,1492104619,2,3,1,5,7,1
-720,Add snapshot usage to Snapshot.Info,Add the disk usage of a snapshot to the `Snapshot.Info` struct.,Add the disk usage of a snapshot to the Snapshot.Info struct.,1491943016,120601,5,,731,1492045139,1493415395,12,6,1,367,51,13
-727,containerd-shim should also cache and provide the exit timestamp.,"We need to know when a container exits.
+46089560,720,Add snapshot usage to Snapshot.Info,Add the disk usage of a snapshot to the `Snapshot.Info` struct.,Add the disk usage of a snapshot to the Snapshot.Info struct.,1491943016,120601,5,,731,1492045139,1493415395,12,6,1,367,51,13
+46089560,727,containerd-shim should also cache and provide the exit timestamp.,"We need to know when a container exits.
 
 We could rely on container exit event, but:
 1) There may be a lag.
@@ -794,19 +794,19 @@ We could rely on container exit event, but:
 It would be better if we could:
 1) Include timestamp in event when it is generated.
 2) Cache the container exit timestamp in containerd-shim, and also returns it when Delete.",1492039931,5821883,5,,739,1492117153,1492200654,5,10,2,383,215,18
-728,OOMEvent should be generated.,"The `OOM` event is defined in containerd api, but is not generated anywhere. https://github.com/containerd/containerd/blob/master/api/types/container/container.proto#L43
+46089560,728,OOMEvent should be generated.,"The `OOM` event is defined in containerd api, but is not generated anywhere. https://github.com/containerd/containerd/blob/master/api/types/container/container.proto#L43
 
 We should generate the `OOM` event for container.","The OOM event is defined in containerd api, but is not generated anywhere. https://github.com/containerd/containerd/blob/master/api/types/container/container.proto#L43
 We should generate the OOM event for container.",1492041049,5821883,5,,740,1492121962,1492727004,3,0,2,47,9,6
-629,Make ctr tool handle Ctrl+C,"For easier testing, `ctr` should handle key combos like Ctrl+C to forward the signals to the containers. Currently its not implemented. ","For easier testing, ctr should handle key combos like Ctrl+C to forward the signals to the containers. Currently its not implemented. ",1489604293,749551,5,,743,1492168166,1493048217,4,9,1,111,75,6
-773,Formalize process of adding new projects,"In relation to: https://github.com/containerd/containerd/issues/772#issuecomment-297548391
+46089560,629,Make ctr tool handle Ctrl+C,"For easier testing, `ctr` should handle key combos like Ctrl+C to forward the signals to the containers. Currently its not implemented. ","For easier testing, ctr should handle key combos like Ctrl+C to forward the signals to the containers. Currently its not implemented. ",1489604293,749551,5,,743,1492168166,1493048217,4,9,1,111,75,6
+46089560,773,Formalize process of adding new projects,"In relation to: https://github.com/containerd/containerd/issues/772#issuecomment-297548391
 
 We need to add a ""[Rules.adding-projects]"" section to https://github.com/containerd/containerd/blob/master/MAINTAINERS that clarifies how new projects get added (or potentially archived down the road).
 
 I'll take care of this through a PR.","In relation to: https://github.com/containerd/containerd/issues/772#issuecomment-297548391
 We need to add a ""[Rules.adding-projects]"" section to https://github.com/containerd/containerd/blob/master/MAINTAINERS that clarifies how new projects get added (or potentially archived down the road).
 I'll take care of this through a PR.",1493243244,63777,1,,779,1493326455,1493415192,6,5,2,17,0,1
-744,cmd/container: running with `no_shim = true` crashes containerd,"Running with [`no_shim = true`](`https://github.com/containerd/containerd/blob/62918511f32014927e20342dd3e29c8a72fda25b/linux/runtime.go#L46`) will cause the following panic when calling `ctr list`:
+46089560,744,cmd/container: running with `no_shim = true` crashes containerd,"Running with [`no_shim = true`](`https://github.com/containerd/containerd/blob/62918511f32014927e20342dd3e29c8a72fda25b/linux/runtime.go#L46`) will cause the following panic when calling `ctr list`:
 
 ```
 panic: runtime error: invalid memory address or nil pointer dereference
@@ -878,7 +878,7 @@ created by github.com/containerd/containerd/vendor/google.golang.org/grpc.(*Serv
     /home/sjd/go/src/github.com/containerd/containerd/vendor/google.golang.org/grpc/server.go:469 +0xa1
 ```
 The running instance was built with 2369f498f2b1f5974bef0ee878ef89b6fbc1941e.",1492204096,120601,5,347599646,788,1493647526,1493662659,3,4,1,21,4,2
-795,execution: Kill should allowing targeting a specific pid,"On some platform the pid returned by the execution runtime may not match a pid on the host (this is actually the case on the windows implementation at the moment).
+46089560,795,execution: Kill should allowing targeting a specific pid,"On some platform the pid returned by the execution runtime may not match a pid on the host (this is actually the case on the windows implementation at the moment).
 
 As such, we should add a `pid` field to the `KillRequest`. This will also allow for client to signal previously created `Execs`.
 
@@ -889,7 +889,7 @@ Thinking of it, maybe the rpc should be renamed to `SignalProcess`?
 As such, we should add a pid field to the KillRequest. This will also allow for client to signal previously created Execs.
 I guess we could use oneof to have either all or pid set within KillRequest.
 Thinking of it, maybe the rpc should be renamed to SignalProcess?",1493766847,16065150,1,,824,1494360622,1495152070,6,15,4,1285,200,16
-770,Output sometimes not captured,"Output is sometimes not shown when starting a container with `ctr run`. This is reproducible with hello-world:
+46089560,770,Output sometimes not captured,"Output is sometimes not shown when starting a container with `ctr run`. This is reproducible with hello-world:
 
 ```
 $ dist pull docker.io/library/hello-world:latest
@@ -900,7 +900,7 @@ Output from the run command seems to only appear about half the time.","Output i
 $ dist pull docker.io/library/hello-world:latest
 $ ctr run --id foo docker.io/library/hello-world:latest
 Output from the run command seems to only appear about half the time.",1493228332,1076486,6,347599646,836,1494442342,1494456849,2,0,1,23,7,3
-787,Support Checkpoint & Restore in containerd 1.0,"The previous version of containerd has support for the checkpoint & restore feature exposed by runc (and implemented with CRIU). This is used in Docker currently as well (as an experimental feature). The 1.0 rewrite of containerd should also support this feature.
+46089560,787,Support Checkpoint & Restore in containerd 1.0,"The previous version of containerd has support for the checkpoint & restore feature exposed by runc (and implemented with CRIU). This is used in Docker currently as well (as an experimental feature). The 1.0 rewrite of containerd should also support this feature.
 
 Based on actual usage and feedback we've gotten so far, there's been some discussion about reworking the interface. Right now, checkpoints are ""attached"" to containers, but I think it makes more sense to move towards checkpoints being a more global resource. 
 
@@ -913,7 +913,7 @@ Based on actual usage and feedback we've gotten so far, there's been some discus
 There also wasn't much thought put into how the filesystem side of things should be managed. One of the biggest use cases for C/R is container migration, so it would be nice to have a more integrated way to manage all the checkpoint related metadata that can be used to move the data around to different machines.
 I'd love to get some feedback from others about how this should work before sitting down and trying to implement anything.
 /cc @xemul @avagin @crosbymichael ",1493418421,22065,1,,862,1494952694,1495493471,20,25,1,2152,405,31
-856,ctr run -t intermittent failures,"I am getting intermittent loss of output with `ctr run -t`. If you run a shell not `ls` it will just exit. The containerd log just says `error=""rpc error: code = 13 desc = transport is closing"" module=""containerd/runtime-linux""`
+46089560,856,ctr run -t intermittent failures,"I am getting intermittent loss of output with `ctr run -t`. If you run a shell not `ls` it will just exit. The containerd log just says `error=""rpc error: code = 13 desc = transport is closing"" module=""containerd/runtime-linux""`
 
 ```
 root@ubuntu-1704:~/go/src/github.com/containerd/containerd# ctr run -t --id ttt7 docker.io/library/busybox:latest ls
@@ -965,8 +965,8 @@ root@ubuntu-1704:~/go/src/github.com/containerd/containerd#
 root@ubuntu-1704:~/go/src/github.com/containerd/containerd# ctr run -t --id ttt7 docker.io/library/busybox:latest ls
 bin   dev   etc   home  proc  root  run   sys   tmp   usr   var
 containerd is 7b2bf52 and runc is c1287819af73a4408e089a358d28d18f6adb7dfc ie both are current master.",1494833776,482364,1,,893,1495563402,1495576051,1,0,1,207,23,3
-866,Add Darwin Builds to CI,We are needing to support OSX for linuxkit consuming the content store of containerd to produce images.  In order for us to support this during development we need to have a CI to cross compile the supported platforms to catch build errors. ,We are needing to support OSX for linuxkit consuming the content store of containerd to produce images.  In order for us to support this during development we need to have a CI to cross compile the supported platforms to catch build errors. ,1494973422,749551,5,,901,1495645044,1495646500,3,0,1,3,2,1
-906,Task info does not contain ContainerID,"When requesting tasks from the execution service, it is missing the `ContainerID` field.  This is causing the API to return the following (empty `ID` & `ContainerID`:
+46089560,866,Add Darwin Builds to CI,We are needing to support OSX for linuxkit consuming the content store of containerd to produce images.  In order for us to support this during development we need to have a CI to cross compile the supported platforms to catch build errors. ,We are needing to support OSX for linuxkit consuming the content store of containerd to produce images.  In order for us to support this during development we need to have a CI to cross compile the supported platforms to catch build errors. ,1494973422,749551,5,,901,1495645044,1495646500,3,0,1,3,2,1
+46089560,906,Task info does not contain ContainerID,"When requesting tasks from the execution service, it is missing the `ContainerID` field.  This is causing the API to return the following (empty `ID` & `ContainerID`:
 
 ```
 [&Task{ID:,ContainerID:,Pid:2951,Status:RUNNING,Spec:&google_protobuf1.Any{TypeUrl...
@@ -982,7 +982,7 @@ shell               0         STOPPED
 This also causes invalid ctr list output:
 ID        IMAGE     PID       STATUS
 shell               0         STOPPED",1495729083,260642,5,,908,1495729391,1495737617,3,0,1,12,8,5
-907,No image specified in ctr list,"When listing containers with `ctr` there is no image shown:
+46089560,907,No image specified in ctr list,"When listing containers with `ctr` there is no image shown:
 
 ```
 ID        IMAGE     PID       STATUS
@@ -992,7 +992,7 @@ shell               0         STOPPED
 ","When listing containers with ctr there is no image shown:
 ID        IMAGE     PID       STATUS
 shell               0         STOPPED",1495729193,260642,5,,908,1495729391,1495737617,3,0,1,12,8,5
-580,journald restart crashes containerd,"This is closely related to https://github.com/docker/docker/issues/19728 :  `journald restart crashes Docker `
+46089560,580,journald restart crashes containerd,"This is closely related to https://github.com/docker/docker/issues/19728 :  `journald restart crashes Docker `
 
 daemon and containerd's stderr point to the same socket if their logs are managed by journald:
 ```bash
@@ -1071,9 +1071,9 @@ ps. docker version is 1.11.2 but have https://github.com/docker/docker/pull/2246
 maybe containerd need to ignore SIGPIPE too. but missing all the docker logs is kind of severe problem.
 not sure if  there is a better way for docker and containerd to deal with these broken pipe errors?
 ping @crosbymichael  @LK4D4  @jwhonce @coolljt0725 ",1488271899,2840248,6,500316785,930,1495892285,1496160783,1,0,1,2,0,1
-912,Add timestamp fields to container object,"Specifically, add ""UpdatedAt"" and ""CreatedAt"".","Specifically, add ""UpdatedAt"" and ""CreatedAt"".",1495750500,120601,5,606698412,933,1496020134,1496689234,7,2,1,186,60,5
-914,Split ctr list into containers and tasks,https://github.com/containerd/containerd/pull/894 introduced a split between tasks and containers. We need to update the cli to reflect this.,https://github.com/containerd/containerd/pull/894 introduced a split between tasks and containers. We need to update the cli to reflect this.,1495753318,120601,5,606698412,935,1496042492,1498248967,13,13,1,133,44,2
-921,events not delivered for containers recovered after a restart,"I seem to not be seeing events for containers which are recovered (i.e. reattached to) after `containerd` is killed and restarted, but they do appear in `ctr list` and can be killed etc.
+46089560,912,Add timestamp fields to container object,"Specifically, add ""UpdatedAt"" and ""CreatedAt"".","Specifically, add ""UpdatedAt"" and ""CreatedAt"".",1495750500,120601,5,606698412,933,1496020134,1496689234,7,2,1,186,60,5
+46089560,914,Split ctr list into containers and tasks,https://github.com/containerd/containerd/pull/894 introduced a split between tasks and containers. We need to update the cli to reflect this.,https://github.com/containerd/containerd/pull/894 introduced a split between tasks and containers. We need to update the cli to reflect this.,1495753318,120601,5,606698412,935,1496042492,1498248967,13,13,1,133,44,2
+46089560,921,events not delivered for containers recovered after a restart,"I seem to not be seeing events for containers which are recovered (i.e. reattached to) after `containerd` is killed and restarted, but they do appear in `ctr list` and can be killed etc.
 
 If I run `containerd` and a `ctr events` process then start a container with:
 ```
@@ -1219,7 +1219,7 @@ Merge pull request #904 from crosbymichael/client
 Add initial containerd client package
 
 ```",1495809356,12985729,1,,939,1496230422,1496335934,15,3,1,32,11,2
-932,shim: fix deadlock,"This PR updates https://github.com/containerd/containerd/issues/869 but not completely fix the issue.
+46089560,932,shim: fix deadlock,"This PR updates https://github.com/containerd/containerd/issues/869 but not completely fix the issue.
 
 Now `ctr exec` works with long-running task e.g. `sleep 3`.
 
@@ -1230,7 +1230,7 @@ Signed-off-by: Akihiro Suda <suda.akihiro@lab.ntt.co.jp>","This PR updates https
 Now ctr exec works with long-running task e.g. sleep 3.
 For a short task e.g. touch /foo, the task can be executed, but task.Event_EXIT cannot happen (and makes CLI hanging), because the task is not yet registered to the reaper when the task exits.
 Signed-off-by: Akihiro Suda suda.akihiro@lab.ntt.co.jp",1495902107,9248427,5,,940,1496254665,1496257193,4,8,1,234,14,5
-869,ctr exec hangs,"Running `ctr exec --id <foo> -t /bin/sh` hangs indefinitely.
+46089560,869,ctr exec hangs,"Running `ctr exec --id <foo> -t /bin/sh` hangs indefinitely.
 
 We initially found this in LinuxKit: https://github.com/linuxkit/linuxkit/issues/1837 which currently uses commit `ac50e77bbb440dcab354a328c79754e2502b79ca` of `runc` and commit `b53105ed253b99f8b63809e704f23819dce9776e` of `containerd`, but I can reproduce with:
 ```
@@ -1263,7 +1263,7 @@ containerd -l debug
 dist pull docker.io/library/nginx:latest
 ctr run --id foobar -t docker.io/library/nginx:latest /bin/sh
 ctr exec --id foobar -t /bin/sh",1495034328,3338098,1,,940,1496254665,1496257193,4,8,1,234,14,5
-785,api: converge events subsystem,"Currently, the [`ContainerService`](https://github.com/containerd/containerd/blob/master/api/services/execution/execution.proto#L19) has an `Events` method that emits events for container lifecycle operations. The intent of this issue is to bring that event system to the wider subsystems.
+46089560,785,api: converge events subsystem,"Currently, the [`ContainerService`](https://github.com/containerd/containerd/blob/master/api/services/execution/execution.proto#L19) has an `Events` method that emits events for container lifecycle operations. The intent of this issue is to bring that event system to the wider subsystems.
 
 The current [`Event`](https://github.com/containerd/containerd/blob/master/api/types/container/container.proto#L39) type is specific to execution related use cases.
 
@@ -1361,14 +1361,14 @@ Tasks:
 [ ] Content Service
 [ ] Rootfs Service
 ",1493415312,120601,5,,956,1496692663,1497990200,11,38,2,8283,68,50
-851,Support schema 1 image.,"Now containerd only supports schema 2 manifest.
+46089560,851,Support schema 1 image.,"Now containerd only supports schema 2 manifest.
 
 However, a lot of images are still using schema 1 manifest.
 
 We should at least support pulling schema 1 image.","Now containerd only supports schema 2 manifest.
 However, a lot of images are still using schema 1 manifest.
 We should at least support pulling schema 1 image.",1494624371,5821883,5,,968,1496794950,1497532518,21,0,3,498,8,6
-969,Namespace Snapshots,"When trying to run two containers with the same id for the container and rootfs, we get a collision for the snapshot.
+46089560,969,Namespace Snapshots,"When trying to run two containers with the same id for the container and rootfs, we get a collision for the snapshot.
 
 Here is the example:
 
@@ -1553,7 +1553,7 @@ return nil
 
 }
 ```",1496855335,749551,5,,971,1496879067,1496954236,4,0,1,57,12,5
-973,Potential memory leakage.,"Containerd-shim maintains a slice of all [processes](https://github.com/containerd/containerd/blob/master/linux/shim/service.go#L44). Whenever a new process is started in the container, an entry is added.
+46089560,973,Potential memory leakage.,"Containerd-shim maintains a slice of all [processes](https://github.com/containerd/containerd/blob/master/linux/shim/service.go#L44). Whenever a new process is started in the container, an entry is added.
 
 In containerd-shim API, there is method to [delete a process inside the container and get the exit status](https://github.com/containerd/containerd/blob/master/linux/shim/service.go#L101). However, there doesn't seem to be a corresponding one in [execution api](https://github.com/containerd/containerd/blob/master/api/services/execution/execution.proto#L75).
 
@@ -1569,16 +1569,16 @@ This means that if I have several long running containers, and keep exec short r
 For Exec in Kubernetes integration, am I supposed to use the shim api to delete the process? Or did I miss anything?
 Should we add Pid in Delete or add another DeleteProcess function in execution service?
 /cc @crosbymichael @mlaventure ",1496888730,5821883,5,347599646,978,1496947586,1497286813,11,10,1,646,225,16
-981,`ctr list` fails with `ctr: container is not based on an image`,"cf https://github.com/containerd/containerd/pull/962#discussion_r120931423
+46089560,981,`ctr list` fails with `ctr: container is not based on an image`,"cf https://github.com/containerd/containerd/pull/962#discussion_r120931423
 
 Running `ctr list` when there are containers which were created by something other than `ctr` itself (in my case it is https://github.com/docker/swarmkit/pull/1965, I expect anything which does not use `WithImage` when calling `client.NewContainer` will expose it) results in `ctr: container is not based on an image`.","cf https://github.com/containerd/containerd/pull/962#discussion_r120931423
 Running ctr list when there are containers which were created by something other than ctr itself (in my case it is https://github.com/docker/swarmkit/pull/1965, I expect anything which does not use WithImage when calling client.NewContainer will expose it) results in ctr: container is not based on an image.",1497000542,12985729,1,347599646,997,1497378284,1497385565,3,0,1,14,7,2
-1004,store.Writer does not check for existing blob,"fetcher expects `store.Writer` to return `ErrExisting`. `remotestore` implements it with stat call https://github.com/containerd/containerd/blob/master/services/content/store.go#L149 but `store` package itself https://github.com/containerd/containerd/blob/master/content/store.go#L229 doesn't implement it, creating an inconsistent behavior.
+46089560,1004,store.Writer does not check for existing blob,"fetcher expects `store.Writer` to return `ErrExisting`. `remotestore` implements it with stat call https://github.com/containerd/containerd/blob/master/services/content/store.go#L149 but `store` package itself https://github.com/containerd/containerd/blob/master/content/store.go#L229 doesn't implement it, creating an inconsistent behavior.
 
 @dmcgowan ","fetcher expects store.Writer to return ErrExisting. remotestore implements it with stat call https://github.com/containerd/containerd/blob/master/services/content/store.go#L149 but store package itself https://github.com/containerd/containerd/blob/master/content/store.go#L229 doesn't implement it, creating an inconsistent behavior.
 @dmcgowan ",1497471319,585223,1,,1006,1497477305,1497644948,5,0,1,7,1,1
-989,Investigate gRPC conn timeout re: `WithBlock()`,Placeholder so we remember to look into the timeout comment in `WithTimeout()` related to whether the connection is blocking or non-blocking. Reference #986,Placeholder so we remember to look into the timeout comment in WithTimeout() related to whether the connection is blocking or non-blocking. Reference #986,1497054356,1397980,1,,1007,1497478140,1498061080,6,4,1,15,11,2
-999,"Kill should return known ""process not running"" error if process does not exist.","When using `unix.Kill()` to kill a process, you know whether a process already exited or not by checking whether the returned error is `syscall.ESRCH`.
+46089560,989,Investigate gRPC conn timeout re: `WithBlock()`,Placeholder so we remember to look into the timeout comment in `WithTimeout()` related to whether the connection is blocking or non-blocking. Reference #986,Placeholder so we remember to look into the timeout comment in WithTimeout() related to whether the connection is blocking or non-blocking. Reference #986,1497054356,1397980,1,,1007,1497478140,1498061080,6,4,1,15,11,2
+46089560,999,"Kill should return known ""process not running"" error if process does not exist.","When using `unix.Kill()` to kill a process, you know whether a process already exited or not by checking whether the returned error is `syscall.ESRCH`.
 
 * Current behavior of containerd `Kill` api:
 If we `Kill` a container twice in a short period (e.g. first for graceful deletion, second for sigkill), the second one may get `""os: process already finished""`, which the caller doesn't know whether it should ignore or not.
@@ -1593,15 +1593,15 @@ Expected behavior:
 If we Kill a container/process which has exited, a known error should be returned, so that the caller knows whether it should ignore the error or not.
 
 Now we could work around this by parsing the error string and look for os: process already finished, which is hacky and platform specific. File the issue here so that we could handle this more properly.",1497394439,5821883,5,,1008,1497481998,1498250929,6,3,1,112,18,8
-1046,restrict character set of namespaces,"Namespaces are being used as filesystem paths (https://github.com/containerd/containerd/pull/993#discussion_r123351807) and that is a convenient model. Since the number of namespaces should be relatively low, and we don't need to encode much information in them (we have labels).
+46089560,1046,restrict character set of namespaces,"Namespaces are being used as filesystem paths (https://github.com/containerd/containerd/pull/993#discussion_r123351807) and that is a convenient model. Since the number of namespaces should be relatively low, and we don't need to encode much information in them (we have labels).
 
 I propose we restrict them to DNS labels. See https://www.ietf.org/rfc/rfc1035.txt for details of that character set, but it is letters, digits and `-`.
 
 cc @Random-Liu ","Namespaces are being used as filesystem paths (https://github.com/containerd/containerd/pull/993#discussion_r123351807) and that is a convenient model. Since the number of namespaces should be relatively low, and we don't need to encode much information in them (we have labels).
 I propose we restrict them to DNS labels. See https://www.ietf.org/rfc/rfc1035.txt for details of that character set, but it is letters, digits and -.
 cc @Random-Liu ",1498075762,120601,5,,1059,1498091132,1498092047,2,5,1,168,2,6
-1025,Add temp namespace to snapshots created by the client,Allows removing snapshots created by the client without unintentionally removing existing rootfs when `WithExistingRootFS` is used.,Allows removing snapshots created by the client without unintentionally removing existing rootfs when WithExistingRootFS is used.,1497650391,169601,5,,1079,1498244285,1498256737,2,0,1,29,19,4
-1076,Client library cannot reconnect after a failure.,"Since #1007 added `grpc.FailOnNonTempDialError(true)` to the client's dial options I am finding with swarmd's containerd executor that if I glitch containerd (by restarting) it is never reconnecting and is always seeing the same error:
+46089560,1025,Add temp namespace to snapshots created by the client,Allows removing snapshots created by the client without unintentionally removing existing rootfs when `WithExistingRootFS` is used.,Allows removing snapshots created by the client without unintentionally removing existing rootfs when WithExistingRootFS is used.,1497650391,169601,5,,1079,1498244285,1498256737,2,0,1,29,19,4
+46089560,1076,Client library cannot reconnect after a failure.,"Since #1007 added `grpc.FailOnNonTempDialError(true)` to the client's dial options I am finding with swarmd's containerd executor that if I glitch containerd (by restarting) it is never reconnecting and is always seeing the same error:
 ```
 rpc error: code = Internal desc = connection error: desc = ""transport: dial unix /run/containerd/containerd.sock: connect: no such file or directory""
 ```
@@ -1646,21 +1646,21 @@ AFAICT google.golang.org/grpc/clientconn.go.addrConn.wait ends up latching the f
 I'm not entirely sure what #1007 (which came about from #989) was attempting to do, in my usage it seemed like ctr event (patched to use the client library) fails immediately if containerd is not running irrespective of the use of WithBlock/WithFailOnNonTempDialError or WithTimeout. The use of grpc.FailFast(false) on individual calls seems to make much more difference.
 For my purposes with the swarmd executor I'm was generally happy with the default behaviour with no-WithBlock or WithFailOnNonTempDialError and with FailFast enabled (the default) for most calls (there are small number where I want to manually retry, but mostly I can rely on the orchestrator to retry things in most cases).
 /cc folks involved with #1007/#989: @dmcgowan @estesp @crosbymichael @stevvooe ",1498229829,12985729,1,,1096,1498497719,1498510471,2,0,1,20,4,1
-817,Different set of options per runtime,"Currently docker has a feature allowing using to specify different option/binaries name for the runtime to be used on a per container basis. This is unfortunately currently not possible on the master branch.
+46089560,817,Different set of options per runtime,"Currently docker has a feature allowing using to specify different option/binaries name for the runtime to be used on a per container basis. This is unfortunately currently not possible on the master branch.
 
 We would need a mechanism that allow us to define different ""flavor"" for a given runtime (i.e. each one with a different set of option but using the same implementation code in the case of the `linux` runtime).
 
 ","Currently docker has a feature allowing using to specify different option/binaries name for the runtime to be used on a per container basis. This is unfortunately currently not possible on the master branch.
 We would need a mechanism that allow us to define different ""flavor"" for a given runtime (i.e. each one with a different set of option but using the same implementation code in the case of the linux runtime).",1494266346,16065150,1,,1098,1498507947,1498837590,11,13,5,1829,830,26
-1067,runtime: add a way to update container constraints,This would allow to update various value in cgroups on linux and some hcsshim constraints on windows for instance,This would allow to update various value in cgroups on linux and some hcsshim constraints on windows for instance,1498159817,16065150,1,,1100,1498520384,1498599586,3,6,1,749,152,15
-1091,type_url set correctly from container structure.,"Fixes #1052
+46089560,1067,runtime: add a way to update container constraints,This would allow to update various value in cgroups on linux and some hcsshim constraints on windows for instance,This would allow to update various value in cgroups on linux and some hcsshim constraints on windows for instance,1498159817,16065150,1,,1100,1498520384,1498599586,3,6,1,749,152,15
+46089560,1091,type_url set correctly from container structure.,"Fixes #1052
 
 This fix, sets the ``type_url``  correctly, while reading information from ``container``, without storing changes in ``container``  struct.
 
 Signed-off-by: Kunal Kushwaha <kushwaha_kunal_v7@lab.ntt.co.jp>","Fixes #1052
 This fix, sets the type_url  correctly, while reading information from container, without storing changes in container  struct.
 Signed-off-by: Kunal Kushwaha kushwaha_kunal_v7@lab.ntt.co.jp",1498455643,2758433,1,,1133,1499292808,1499372458,5,15,5,465,438,30
-1052,typeUrl in Container set incorrectly,"If we dump a container, we can see we have the following information:
+46089560,1052,typeUrl in Container set incorrectly,"If we dump a container, we can see we have the following information:
 
 ```json
 {
@@ -1701,11 +1701,11 @@ json
 }
 The value of type_url is set to 1.0.0-rc5. We should follow the typeUrl guidelines in protobuf and set it to something like this:
 types.containerd.io/opencontainers/runtime-spec/v1.0.0-rc5",1498085680,120601,5,,1133,1499292808,1499372458,5,15,5,465,438,30
-1032,Should be able to run containerd-shim inside a specified cgroup.,"Orchestrator may want to run containerd-shim inside specified cgroup to charge the resource usage to a specific user/sandbox.
+46089560,1032,Should be able to run containerd-shim inside a specified cgroup.,"Orchestrator may want to run containerd-shim inside specified cgroup to charge the resource usage to a specific user/sandbox.
 
 /cc @crosbymichael ","Orchestrator may want to run containerd-shim inside specified cgroup to charge the resource usage to a specific user/sandbox.
 /cc @crosbymichael ",1497914692,5821883,5,,1134,1499375394,1501196948,10,5,1,227,40,8
-1132,Shim unconditionally mounts rootfs as MS_SLAVE,"https://github.com/linuxkit/linuxkit/issues/2131 is an issue with [LinuxKit's `projects/kubernetes`](https://github.com/linuxkit/linuxkit/tree/master/projects/kubernetes) where the `kubelet` container expects to create mount which will be visible in a `docker` container. Both of them have a `/var:/var:rshared,rbind` but the mounts made by `kubelet` are not appearing in the docker container.
+46089560,1132,Shim unconditionally mounts rootfs as MS_SLAVE,"https://github.com/linuxkit/linuxkit/issues/2131 is an issue with [LinuxKit's `projects/kubernetes`](https://github.com/linuxkit/linuxkit/tree/master/projects/kubernetes) where the `kubelet` container expects to create mount which will be visible in a `docker` container. Both of them have a `/var:/var:rshared,rbind` but the mounts made by `kubelet` are not appearing in the docker container.
 
 I eventually tracked this down to the shim's [`setupRoot`](https://github.com/containerd/containerd/blob/master/cmd/containerd-shim/shim_linux.go#L37..L39) which unconditionally does `unix.Mount("""", ""/"", """", unix.MS_SLAVE|unix.MS_REC, """")`. Which was added  in ab8586b7c5e7a9a95053d3d6293d671c030bae00 (""Remove bundles from API"").
 
@@ -1721,7 +1721,7 @@ Would it be possible to make this optional by some means? Or maybe it is even po
 WRT https://github.com/linuxkit/linuxkit/issues/2131 I have confirmed that either dropping the mount from shim or changing it to MS_SHARED unbreaks things. I also confirmed that removing rootfsPropagation: shared from the kubelet container re-breaks things, so it seems the code in runc is effective.
 @justincormack pointed me at a document and in particular https://github.com/kubernetes/community/issues/648 which seem somewhat relevant/related.
 /cc @justincormack @crosbymichael ",1499245050,12985729,1,,1141,1499439299,1500668322,10,15,4,56,16,7
-1092,ctr info  dump incorrect output.,"``ctr show <container-id>`` show invalid output. The JSON parsing of ``container`` struct is always empty.
+46089560,1092,ctr info  dump incorrect output.,"``ctr show <container-id>`` show invalid output. The JSON parsing of ``container`` struct is always empty.
 
 ```
 $ ctr show test
@@ -1729,7 +1729,7 @@ $ ctr show test
 ```","ctr show <container-id> show invalid output. The JSON parsing of container struct is always empty.
 $ ctr show test
 {}",1498457010,2758433,1,,1146,1499604601,1499706534,3,0,1,1,1,1
-1068,runtime: missing events,"At first glance we are missing the following events:
+46089560,1068,runtime: missing events,"At first glance we are missing the following events:
  - pause
  - resume
  - checkpoint
@@ -1739,11 +1739,11 @@ The task would need to hold a reference to its runtime to be able to emit those 
  - resume
  - checkpoint
 The task would need to hold a reference to its runtime to be able to emit those given the current design.",1498166926,16065150,1,,1157,1499801938,1499812256,2,0,1,83,55,4
-1071,runtime events are awkwardly named,"Several events, such as `RuntimeCreate` actually create a task in the runtime. These should probably just be task events.
+46089560,1071,runtime events are awkwardly named,"Several events, such as `RuntimeCreate` actually create a task in the runtime. These should probably just be task events.
 
 cc @ehazlett ","Several events, such as RuntimeCreate actually create a task in the runtime. These should probably just be task events.
 cc @ehazlett ",1498175017,120601,5,,1158,1499814830,1499883422,3,3,1,1886,2304,17
-1162,`ctr exec` hangs if given command does not exist in the container,"While debugging #1161 I noticed that with:
+46089560,1162,`ctr exec` hangs if given command does not exist in the container,"While debugging #1161 I noticed that with:
 ```
 sudo ./bin/dist pull docker.io/library/alpine:latest
 sudo ./bin/ctr run --tty docker.io/library/alpine:latest test
@@ -1764,7 +1764,7 @@ sudo ./bin/ctr exec --tty --exec-id bash test bash
 hangs (note that there is no bash in alpine:latest). I would expect and ENOENT type error of some sort.
 There are no logs from the containerd process end.
 I see this with current master (0600399b0d618a3d16cabc2af4f2f25d533cf1ed) but it appears to have been the case for quite a while (if not forever).",1499875283,12985729,1,347599646,1165,1499879118,1499885886,5,0,3,162,39,14
-1161,`ctr exec --tty` hangs,"In one terminal:
+46089560,1161,`ctr exec --tty` hangs,"In one terminal:
 ```
 sudo ./bin/dist pull docker.io/library/alpine:latest
 sudo ./bin/ctr run --tty docker.io/library/alpine:latest test
@@ -1783,7 +1783,7 @@ and then in another
 sudo ./bin/ctr exec --tty test ash
 This hangs rather than producing the expected prompt.
 git bisect has fingered f93bfb62337b645a2b3ad2a0f6b60e1d89f553a4. I expect there is a missing s/id/container_id/ somewhere but I've not spotted it yet. /cc @crosbymichael ",1499874097,12985729,1,347599646,1165,1499879118,1499885886,5,0,3,162,39,14
-652,Proposal: support multiple snapshotters on single daemon,"It would be useful to support multiple snapshotters on single daemon, because the snapshotters would have different characteristics in their performance and stability.
+46089560,652,Proposal: support multiple snapshotters on single daemon,"It would be useful to support multiple snapshotters on single daemon, because the snapshotters would have different characteristics in their performance and stability.
 
 ## Design
 
@@ -1981,7 +1981,7 @@ Alternative idea for the annotation is specifying multiple candidates of snapsho
 The containerd daemon should pick one of these candidates.
 At least one candidate is supported, it should not result in an error.
 (e.g. if aufs is unsupported, it should automatically fall-back to overlay)",1490173269,9248427,5,,1167,1499883410,1499891672,5,0,1,741,253,22
-809,support using multiple snapshotters simultaneously,"Close #652 
+46089560,809,support using multiple snapshotters simultaneously,"Close #652 
 
 
 How to test:
@@ -1999,14 +1999,14 @@ $ dist pull --snapshotter btrfs docker.io/library/busybox:latest
 $ ctr run -t --id foo --snapshotter btrfs docker.io/library/busybox:latest
 Empty string stands for ""overlayfs"" by default (parsed on the daemon side).
 Signed-off-by: Akihiro Suda suda.akihiro@lab.ntt.co.jp",1494020066,9248427,5,,1167,1499883410,1499891672,5,0,1,741,253,22
-1061,ContainerIDs and TaskIDs (not yet implemented) should follow namespace charset constraints,"#1046 added restrictions for namespaces. We should match these restrictions in container and task ids.
+46089560,1061,ContainerIDs and TaskIDs (not yet implemented) should follow namespace charset constraints,"#1046 added restrictions for namespaces. We should match these restrictions in container and task ids.
 
 The naming logic in the `namespaces` package should be broken out and used across these packages.
 
 Task IDs are not yet implemented.","1046 added restrictions for namespaces. We should match these restrictions in container and task ids.
 The naming logic in the namespaces package should be broken out and used across these packages.
 Task IDs are not yet implemented.",1498092360,120601,5,,1170,1499896285,1499897718,3,0,1,162,32,10
-1192,Spurious warning on `dist images ls` for schema 1 images,"```
+46089560,1192,Spurious warning on `dist images ls` for schema 1 images,"```
 $ dist images ls
 WARN[0000] encounted unknown type application/vnd.oci.image.config.v1+json; children may not be fetched 
 REF                                                                      TYPE                                                 DIGEST                                                                  SIZE      
@@ -2021,7 +2021,7 @@ REF                                                                      TYPE   
 ecr.aws/arn:aws:ecr:us-west-2:137112412989:repository/amazonlinux:latest application/vnd.oci.image.manifest.v1+json           sha256:d1a0877e8ec6b1380ec1f009d81001e0e19e8fddec2328a1593c5dc290bb62bf 87.5 MiB
 This is on e48ef84b20464732d0c0dd24b53897f3af4e12cb.  If you want to pull this image, you can use https://github.com/samuelkarp/amazon-ecr-containerd-resolver and pull it with sudo ./bin/ecr-pull ecr.aws/arn:aws:ecr:us-west-2:137112412989:repository/amazonlinux:latest.
 cc @dmcgowan ",1500149037,737750,5,,1198,1500315502,1500316171,2,0,1,3,2,1
-1176,containers list gives incorrect images,"
+46089560,1176,containers list gives incorrect images,"
 sudo dist images ls
 REF                              TYPE                                                 DIGEST                                                                  SIZE
 docker.io/library/busybox:latest application/vnd.docker.distribution.manifest.v2+json sha256:be3c11fdba7cfe299214e46edc642e09514dbb9bbefcd0d3836c05a1e0cd0642 684.8 KiB
@@ -2045,7 +2045,7 @@ In another terminal, it gave the following messages
 sudo ctr containers ls
 ctr: image ""docker.io/library/ubuntu:latest"": not found
 I have cleaned up all images using dist images rm.",1499915706,8536762,1,,1200,1500328359,1500333283,2,0,1,2,8,1
-1222,Manually kill containerd-shim when container is paused causes other docker command block forever,"**Steps to reproduce the issue:**
+46089560,1222,Manually kill containerd-shim when container is paused causes other docker command block forever,"**Steps to reproduce the issue:**
 Run the following script:
 ```bash
 1     #!/bin/bash
@@ -2093,7 +2093,7 @@ Additional information you deem important (e.g. issue happens only occasionally)
 After containerd/containerd #1111, kill shim of a paused container will first resume this container, then this container is killed. But when the the script blocks, I find the container is still paused. handleSigkilledShim() returns at https://github.com/containerd/containerd/blob/v0.2.x/runtime/process.go#L306, so the following p.container.Resume() is not reached.
 That is to say, when exit pipe is closed since shim is killed, we can still see shim for a while. I have tried to add a sleep(10 milliseconds) before e := unix.Kill(p.cmd.Process.Pid, 0), then the above script won't block for a long time.
 @mlaventure @coolljt0725 Any ideas about this issue?",1500554136,20569488,6,500316785,1223,1500558544,1500944730,6,1,1,5,7,1
-1235,cmd/ctr: specs not getting properly registered,"When I run the following:
+46089560,1235,cmd/ctr: specs not getting properly registered,"When I run the following:
 
 ```console
 $ ctr run -t docker.io/library/busybox:latest testing3 sh
@@ -2138,7 +2138,7 @@ index bb42e9a7..913da1ea 100644
         ""github.com/pkg/errors
 However, these should probably get registered consistently across platforms. We should also improve the error message to list the package, as well:
 cc @dmcgowan @mlaventure ",1500683228,120601,5,,1238,1500917486,1500922150,3,2,1,11,1,2
-1193,ROADMAP.md is outdated,"https://github.com/containerd/containerd/blob/4f2b443a27a43df5945ebf9c18b533e526afc614/ROADMAP.md
+46089560,1193,ROADMAP.md is outdated,"https://github.com/containerd/containerd/blob/4f2b443a27a43df5945ebf9c18b533e526afc614/ROADMAP.md
 
 @crosbymichael 
 Could you please update the file so that people can easily understand the current status?
@@ -2146,13 +2146,13 @@ IIUC the current status is Phase 4?","https://github.com/containerd/containerd/b
 @crosbymichael 
 Could you please update the file so that people can easily understand the current status?
 IIUC the current status is Phase 4?",1500215929,9248427,5,,1239,1500918184,1500921255,3,0,1,2,77,1
-1232,content: cancelled pulls do not clean up ingests,"When a pull is cancelled, the ingests are not cancelled nor do subsequent pulls gracefully handle abandoned ingests. Interrupting the cli should cancel contexts, and cancelled contexts should clean up resources. Additionally, a method is needed to timeout abandoned ingests or detect and resume their work.
+46089560,1232,content: cancelled pulls do not clean up ingests,"When a pull is cancelled, the ingests are not cancelled nor do subsequent pulls gracefully handle abandoned ingests. Interrupting the cli should cancel contexts, and cancelled contexts should clean up resources. Additionally, a method is needed to timeout abandoned ingests or detect and resume their work.
 
 ```
 ERRO[0008] (*Service).Write failed                       error=""rpc error: code = Unavailable desc = ref layer-sha256:43126a124ea63a2f031b5203728ffda8abc62068222c301672e2591af813acfa is currently in use: unavailable"" expected=sha256:43126a124ea63a2f031b5203728ffda8abc62068222c301672e2591af813acfa ref=""layer-sha256:43126a124ea63a2f031b5203728ffda8abc62068222c301672e2591af813acfa"" total=75627926
 ```","When a pull is cancelled, the ingests are not cancelled nor do subsequent pulls gracefully handle abandoned ingests. Interrupting the cli should cancel contexts, and cancelled contexts should clean up resources. Additionally, a method is needed to timeout abandoned ingests or detect and resume their work.
 ERRO[0008] (*Service).Write failed                       error=""rpc error: code = Unavailable desc = ref layer-sha256:43126a124ea63a2f031b5203728ffda8abc62068222c301672e2591af813acfa is currently in use: unavailable"" expected=sha256:43126a124ea63a2f031b5203728ffda8abc62068222c301672e2591af813acfa ref=""layer-sha256:43126a124ea63a2f031b5203728ffda8abc62068222c301672e2591af813acfa"" total=75627926",1500663934,169601,5,,1241,1500923857,1500935418,2,0,1,16,11,2
-1244,Clarify `With` names in clients for snapshots,"In the client we use the term ""RootFS` when referring to snapshots. This is confusing terminology, we should refer to a rootfs as either a set of mounts to create a rootfs or a directory which can be used as a rootfs. In the client we should use the term snapshots to refer to any identifier which is to be used with a snapshotter.
+46089560,1244,Clarify `With` names in clients for snapshots,"In the client we use the term ""RootFS` when referring to snapshots. This is confusing terminology, we should refer to a rootfs as either a set of mounts to create a rootfs or a directory which can be used as a rootfs. In the client we should use the term snapshots to refer to any identifier which is to be used with a snapshotter.
 
 Naming might look like...
  - `WithSnapshot` - would take in existing snapshot
@@ -2166,7 +2166,7 @@ Naming might look like...
  - WithNewSnapshotView - formerly WithNewReadonlyRootFS
  - WithRootFS - would take in mounts and use them directly
  - WithRootFSPath - would take in local directory to bind mount as rootfs",1500940678,169601,5,,1249,1501020633,1501021859,2,0,2,70,51,13
-1138,"container do not exit,  in case of no shim mode.","If container is created in ""no shim"" mode, while exiting from container it hangs. i.e. container stops but control is not returned to shell.
+46089560,1138,"container do not exit,  in case of no shim mode.","If container is created in ""no shim"" mode, while exiting from container it hangs. i.e. container stops but control is not returned to shell.
 
 ctr needs handling of container exit event.
 
@@ -2208,14 +2208,14 @@ $ sudo ctr t list
 TASK     PID     STATUS  
 test    4287    STOPPED
 ```",1499416611,2758433,1,,1263,1501276392,1501525579,3,2,1,63,27,5
-1266,Sirupsen/sirupsen is causing trouble.,"containerd v1.0.0-alpha2 is using `sirupsen`, but the corresponding runc version (429a5387123625040bacfbb60d96b1cbd02293ab) is still using `Sirupsen`.
+46089560,1266,Sirupsen/sirupsen is causing trouble.,"containerd v1.0.0-alpha2 is using `sirupsen`, but the corresponding runc version (429a5387123625040bacfbb60d96b1cbd02293ab) is still using `Sirupsen`.
 
 This caused trouble to us when we are using both containerd and runc libraries.
 
 Can we update the runc version in containerd? Is there any breaking change in runc blocking us?","containerd v1.0.0-alpha2 is using sirupsen, but the corresponding runc version (429a5387123625040bacfbb60d96b1cbd02293ab) is still using Sirupsen.
 This caused trouble to us when we are using both containerd and runc libraries.
 Can we update the runc version in containerd? Is there any breaking change in runc blocking us?",1501525578,5821883,5,,1267,1501526086,1501526608,4,0,1,42,22,7
-1054,`task.Wait` blocks when called multiple times after the task exits,"`task.Wait` blocks when called multiple times after the task exits
+46089560,1054,`task.Wait` blocks when called multiple times after the task exits,"`task.Wait` blocks when called multiple times after the task exits
 
 I would expect the following code to complete without errors:
 
@@ -2333,21 +2333,21 @@ return nil
 }
 ```
 However, I'm seeing task.Wait block the second time it's called after the task exits (the line indicated by ""wait after kill 2"").",1498088777,737750,5,,1268,1501532062,1501696742,7,6,10,1668,743,26
-578,tests: add lint and vet check for PR unit tests,"This are good to keep code consistent on clean. We did this early on with SwarmKit and it yielded a solid code base. No reason we can't go forward with it here.
+46089560,578,tests: add lint and vet check for PR unit tests,"This are good to keep code consistent on clean. We did this early on with SwarmKit and it yielded a solid code base. No reason we can't go forward with it here.
 
 Please see https://github.com/docker/containerd/pull/573#issuecomment-282939338 for some opinions.
 
 cc @samuelkarp @kunalkushwaha ","This are good to keep code consistent on clean. We did this early on with SwarmKit and it yielded a solid code base. No reason we can't go forward with it here.
 Please see https://github.com/docker/containerd/pull/573#issuecomment-282939338 for some opinions.
 cc @samuelkarp @kunalkushwaha ",1488256387,120601,5,,1275,1501624169,1502112114,5,4,3,20,12,7
-1274,Add forcibly delete in Task client.,"Currently, `Delete` in task grpc api only takes effect when task is in `stopped` state, and [Task client `Delete`](https://github.com/containerd/containerd/blob/master/task.go#L194) is using the grpc api directly.
+46089560,1274,Add forcibly delete in Task client.,"Currently, `Delete` in task grpc api only takes effect when task is in `stopped` state, and [Task client `Delete`](https://github.com/containerd/containerd/blob/master/task.go#L194) is using the grpc api directly.
 
 However, it seems that we are not aware of this when using the client, e.g. [here](https://github.com/containerd/containerd/blob/master/cmd/ctr/run.go#L128).
 
 It seems useful to add an option in the client to forcibly kill and delete the task, especially useful when cleanup.","Currently, Delete in task grpc api only takes effect when task is in stopped state, and Task client Delete is using the grpc api directly.
 However, it seems that we are not aware of this when using the client, e.g. here.
 It seems useful to add an option in the client to forcibly kill and delete the task, especially useful when cleanup.",1501614777,5821883,5,,1301,1502136732,1502203709,4,3,1,181,3,4
-1317,ctr: inconsistency between `snapshot commit and `snapshot prepare`,"`ctr snapshot prepare` insists that the first argument is a properly formatted digest, however `ctr snapshot commit` accepts any string as the id, and I don't see a command which helps to calculate a suitable digest.
+46089560,1317,ctr: inconsistency between `snapshot commit and `snapshot prepare`,"`ctr snapshot prepare` insists that the first argument is a properly formatted digest, however `ctr snapshot commit` accepts any string as the id, and I don't see a command which helps to calculate a suitable digest.
 
 I've just been using `sha256:00000000000000000000000000000000000000000000000000000000deadbeef`, but that doesn't feel right!
 
@@ -2401,7 +2401,7 @@ $M
 ```
 The ctr snapshot commit ijc-remap sha256:00000000000000000000000000000000000000000000000000000000deadbeef is the odd bit IMHO.
 Also (minor) on the subject, I've been terribly confused today because some of the ctr snapshot foo commands and the underlying snapshoter.Foo interfaces seem to take their arguments in the opposite order!",1502295152,12985729,1,,1321,1502315676,1502374119,9,0,1,29,96,1
-1076,Client library cannot reconnect after a failure.,"Since #1007 added `grpc.FailOnNonTempDialError(true)` to the client's dial options I am finding with swarmd's containerd executor that if I glitch containerd (by restarting) it is never reconnecting and is always seeing the same error:
+46089560,1076,Client library cannot reconnect after a failure.,"Since #1007 added `grpc.FailOnNonTempDialError(true)` to the client's dial options I am finding with swarmd's containerd executor that if I glitch containerd (by restarting) it is never reconnecting and is always seeing the same error:
 ```
 rpc error: code = Internal desc = connection error: desc = ""transport: dial unix /run/containerd/containerd.sock: connect: no such file or directory""
 ```
@@ -2446,15 +2446,15 @@ AFAICT google.golang.org/grpc/clientconn.go.addrConn.wait ends up latching the f
 I'm not entirely sure what #1007 (which came about from #989) was attempting to do, in my usage it seemed like ctr event (patched to use the client library) fails immediately if containerd is not running irrespective of the use of WithBlock/WithFailOnNonTempDialError or WithTimeout. The use of grpc.FailFast(false) on individual calls seems to make much more difference.
 For my purposes with the swarmd executor I'm was generally happy with the default behaviour with no-WithBlock or WithFailOnNonTempDialError and with FailFast enabled (the default) for most calls (there are small number where I want to manually retry, but mostly I can rely on the orchestrator to retry things in most cases).
 /cc folks involved with #1007/#989: @dmcgowan @estesp @crosbymichael @stevvooe ",1498229829,12985729,1,,1338,1502409236,1502476206,5,8,5,299,69,11
-1330,content: package should not depend on OCI,"Somehow, the content package was intertwined with the OCI package in an awful manner:
+46089560,1330,content: package should not depend on OCI,"Somehow, the content package was intertwined with the OCI package in an awful manner:
 
 https://github.com/containerd/containerd/blob/master/content/content.go#L86
 
 This needs to be fixed.","Somehow, the content package was intertwined with the OCI package in an awful manner:
 https://github.com/containerd/containerd/blob/master/content/content.go#L86
 This needs to be fixed.",1502390962,120601,5,,1339,1502473453,1502483563,7,9,1,171,489,5
-1286,document directory layout,It will be easier to make decisions about where new components write data if we have a common place where the directory layout is documented.,It will be easier to make decisions about where new components write data if we have a common place where the directory layout is documented.,1501792801,120601,5,,1344,1502484924,1502493680,2,0,1,39,0,1
-1361,`make install` overrides the well-known `stress(1)`,"`make install` overrides the well-known `stress` command: http://people.seas.harvard.edu/~apw/stress
+46089560,1286,document directory layout,It will be easier to make decisions about where new components write data if we have a common place where the directory layout is documented.,It will be easier to make decisions about where new components write data if we have a common place where the directory layout is documented.,1501792801,120601,5,,1344,1502484924,1502493680,2,0,1,39,0,1
+46089560,1361,`make install` overrides the well-known `stress(1)`,"`make install` overrides the well-known `stress` command: http://people.seas.harvard.edu/~apw/stress
 
 
 @crosbymichael 
@@ -2466,7 +2466,7 @@ Or it might be better to just remove `stress` from the `install` target of `Make
 @crosbymichael 
 May I open a PR to rename the containerd stress to ctr-stress? (ctrd-stress? containerd-stress?) 
 Or it might be better to just remove stress from the install target of Makefile?",1502774245,9248427,5,,1365,1502808900,1502809385,2,0,1,2,2,2
-1368,"mount_linux: `MS_REC | MS_BIND | MS_RDONLY` does not mean ""readonly""","
+46089560,1368,"mount_linux: `MS_REC | MS_BIND | MS_RDONLY` does not mean ""readonly""","
 
 `ctr run --readonly` creates `View` snapshot but it won't be mounted as ""readonly"":
 
@@ -2507,7 +2507,7 @@ The issue is that mount_linux.go translates this Options to MS_REC | MS_BIND | M
 Instead, we need to do two mounts: MS_BIND first and then MS_BIND | MS_REMOUNT | MS_RDONLY.
 Moby has been already doing that: https://github.com/moby/moby/blob/3a1ab5b479ce843648cf676fbaaf2bec9e040dce/pkg/mount/mounter_linux.go
 I'll try to open a PR.",1502870890,9248427,5,,1373,1502941327,1504621760,10,12,1,112,14,6
-1376,You can never delete a exec process before it's started.,"Sometimes we need to delete a exec process when it's in created state, e.g. doing cleanup when start fails for some reason.
+46089560,1376,You can never delete a exec process before it's started.,"Sometimes we need to delete a exec process when it's in created state, e.g. doing cleanup when start fails for some reason.
 
 However, currently there is no way to delete a exec process in created state.
 
@@ -2520,7 +2520,7 @@ If you use process.Delete(ctx), it will tell you process must be stopped before 
 Even if you Kill the process, because the pid is 0, it will return directly and the process will still be created.
 If you use process.Delete(ctx, containerd.WithProcessKill), because the process is in created state, Wait will start waiting for TaskExit event. However, because there is no such event generated, it will hang forever until context deadline exceeded.
 ",1502995442,5821883,5,,1377,1502995897,1503354438,14,0,1,86,3,3
-1270,Makefile: use per-platform include file,"At this point, the `Makefile` is becoming littered with terse inlines and hacks to support multi-platform behavior. Let's move to having a platform include file per platform to separate out the platform-specific behavior. We would add something like this to the base `Makefile`:
+46089560,1270,Makefile: use per-platform include file,"At this point, the `Makefile` is becoming littered with terse inlines and hacks to support multi-platform behavior. Let's move to having a platform include file per platform to separate out the platform-specific behavior. We would add something like this to the base `Makefile`:
 
 ```
 include Makefile.${GOOS}
@@ -2532,16 +2532,16 @@ This will keep our `Makefile` clean, simple and readable. The platform-specific 
 include Makefile.${GOOS}
 If the file doesn't exist, we get a build error. If it does exist, it can set platform-specific items, such as the WHALE, package lists and other branched behavior.
 This will keep our Makefile clean, simple and readable. The platform-specific items will be neatly hidden away, where they belong.",1501542515,120601,5,606698412,1388,1503019611,1503412431,10,4,1,54,22,7
-1389,`ctr run` hangs (seems regression in 06dc87ae59cca1536a3a98741a267af687b6dcdd),"`sudo ctr run docker.io/library/alpine:latest foo echo hello` always hangs after printing `hello`
+46089560,1389,`ctr run` hangs (seems regression in 06dc87ae59cca1536a3a98741a267af687b6dcdd),"`sudo ctr run docker.io/library/alpine:latest foo echo hello` always hangs after printing `hello`
 
 Always reproducible in 06dc87ae59cca1536a3a98741a267af687b6dcdd, but not in the previous commit
 ","sudo ctr run docker.io/library/alpine:latest foo echo hello always hangs after printing hello
 Always reproducible in 06dc87ae59cca1536a3a98741a267af687b6dcdd, but not in the previous commit",1503031381,9248427,5,"347599646,347599659",1391,1503064845,1503067317,1,0,1,0,2,1
-1384,Support for multiple differs,"We need to support multiple differs in order to support snapshotters which do not directly expose the file system for doing a walking diff.
+46089560,1384,Support for multiple differs,"We need to support multiple differs in order to support snapshotters which do not directly expose the file system for doing a walking diff.
 
 This is needed to enable the LCOW snapshotters.","We need to support multiple differs in order to support snapshotters which do not directly expose the file system for doing a walking diff.
 This is needed to enable the LCOW snapshotters.",1503008919,169601,5,,1393,1503080450,1503524718,2,5,1,98,29,4
-1402,Flaky Test: TestContainerAttach,"```
+46089560,1402,Flaky Test: TestContainerAttach,"```
 --- FAIL: TestContainerAttach (0.62s)
 	container_test.go:636: expected output ""hello\nhello\n"" but received ""hello\n""
 ```
@@ -2549,7 +2549,7 @@ This is needed to enable the LCOW snapshotters.",1503008919,169601,5,,1393,15030
 IO needs to be sync client side.","--- FAIL: TestContainerAttach (0.62s)
     container_test.go:636: expected output ""hello\nhello\n"" but received ""hello\n""
 IO needs to be sync client side.",1503096757,16065150,1,,1405,1503327913,1503442365,3,2,1,206,139,4
-1360,WithUser and WithUID options,"`WithUser` and `WithUID` options are needed to run container as a specific user.
+46089560,1360,WithUser and WithUID options,"`WithUser` and `WithUID` options are needed to run container as a specific user.
 
 `WithUID` is simple, it's fine to leave users to do it themselves.
 However, `WithUser` is a bit hard, it needs to mount container rootfs first, read `/etc/passwd` etc., which seems better to implement in containerd.","WithUser and WithUID options are needed to run container as a specific user.
