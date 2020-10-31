@@ -43,7 +43,7 @@ The value of `issue_author_association` can be one of the following:
 
 See [GitHub docs](https://docs.github.com/en/free-pro-team@latest/graphql/reference/enums#commentauthorassociation) for more details on author association.
 
-Rows of the dataset are sorted by repository owner username, repository name, and then pull request number.
+Rows of the dataset are sorted by repository owner username, repository name, pull request number, and then issue number.
 
 ## Method
 The data is collected using the [GitHub REST API](https://docs.github.com/en/free-pro-team@latest/rest).

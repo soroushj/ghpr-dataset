@@ -1219,17 +1219,6 @@ Merge pull request #904 from crosbymichael/client
 Add initial containerd client package
 
 ```",1495809356,12985729,1,,939,1496230422,1496335934,15,3,1,32,11,2
-46089560,932,shim: fix deadlock,"This PR updates https://github.com/containerd/containerd/issues/869 but not completely fix the issue.
-
-Now `ctr exec` works with long-running task e.g. `sleep 3`.
-
-For a short task e.g. `touch /foo`, the task can be executed, but task.Event_EXIT cannot happen (and makes CLI hanging), because the task is not yet registered to the reaper when the task exits.
-
-
-Signed-off-by: Akihiro Suda <suda.akihiro@lab.ntt.co.jp>","This PR updates https://github.com/containerd/containerd/issues/869 but not completely fix the issue.
-Now ctr exec works with long-running task e.g. sleep 3.
-For a short task e.g. touch /foo, the task can be executed, but task.Event_EXIT cannot happen (and makes CLI hanging), because the task is not yet registered to the reaper when the task exits.
-Signed-off-by: Akihiro Suda suda.akihiro@lab.ntt.co.jp",1495902107,9248427,5,,940,1496254665,1496257193,4,8,1,234,14,5
 46089560,869,ctr exec hangs,"Running `ctr exec --id <foo> -t /bin/sh` hangs indefinitely.
 
 We initially found this in LinuxKit: https://github.com/linuxkit/linuxkit/issues/1837 which currently uses commit `ac50e77bbb440dcab354a328c79754e2502b79ca` of `runc` and commit `b53105ed253b99f8b63809e704f23819dce9776e` of `containerd`, but I can reproduce with:
@@ -1263,6 +1252,17 @@ containerd -l debug
 dist pull docker.io/library/nginx:latest
 ctr run --id foobar -t docker.io/library/nginx:latest /bin/sh
 ctr exec --id foobar -t /bin/sh",1495034328,3338098,1,,940,1496254665,1496257193,4,8,1,234,14,5
+46089560,932,shim: fix deadlock,"This PR updates https://github.com/containerd/containerd/issues/869 but not completely fix the issue.
+
+Now `ctr exec` works with long-running task e.g. `sleep 3`.
+
+For a short task e.g. `touch /foo`, the task can be executed, but task.Event_EXIT cannot happen (and makes CLI hanging), because the task is not yet registered to the reaper when the task exits.
+
+
+Signed-off-by: Akihiro Suda <suda.akihiro@lab.ntt.co.jp>","This PR updates https://github.com/containerd/containerd/issues/869 but not completely fix the issue.
+Now ctr exec works with long-running task e.g. sleep 3.
+For a short task e.g. touch /foo, the task can be executed, but task.Event_EXIT cannot happen (and makes CLI hanging), because the task is not yet registered to the reaper when the task exits.
+Signed-off-by: Akihiro Suda suda.akihiro@lab.ntt.co.jp",1495902107,9248427,5,,940,1496254665,1496257193,4,8,1,234,14,5
 46089560,785,api: converge events subsystem,"Currently, the [`ContainerService`](https://github.com/containerd/containerd/blob/master/api/services/execution/execution.proto#L19) has an `Events` method that emits events for container lifecycle operations. The intent of this issue is to bring that event system to the wider subsystems.
 
 The current [`Event`](https://github.com/containerd/containerd/blob/master/api/types/container/container.proto#L39) type is specific to execution related use cases.
@@ -1653,13 +1653,6 @@ We would need a mechanism that allow us to define different ""flavor"" for a giv
 ","Currently docker has a feature allowing using to specify different option/binaries name for the runtime to be used on a per container basis. This is unfortunately currently not possible on the master branch.
 We would need a mechanism that allow us to define different ""flavor"" for a given runtime (i.e. each one with a different set of option but using the same implementation code in the case of the linux runtime).",1494266346,16065150,1,,1098,1498507947,1498837590,11,13,5,1829,830,26
 46089560,1067,runtime: add a way to update container constraints,This would allow to update various value in cgroups on linux and some hcsshim constraints on windows for instance,This would allow to update various value in cgroups on linux and some hcsshim constraints on windows for instance,1498159817,16065150,1,,1100,1498520384,1498599586,3,6,1,749,152,15
-46089560,1091,type_url set correctly from container structure.,"Fixes #1052
-
-This fix, sets the ``type_url``  correctly, while reading information from ``container``, without storing changes in ``container``  struct.
-
-Signed-off-by: Kunal Kushwaha <kushwaha_kunal_v7@lab.ntt.co.jp>","Fixes #1052
-This fix, sets the type_url  correctly, while reading information from container, without storing changes in container  struct.
-Signed-off-by: Kunal Kushwaha kushwaha_kunal_v7@lab.ntt.co.jp",1498455643,2758433,1,,1133,1499292808,1499372458,5,15,5,465,438,30
 46089560,1052,typeUrl in Container set incorrectly,"If we dump a container, we can see we have the following information:
 
 ```json
@@ -1701,6 +1694,13 @@ json
 }
 The value of type_url is set to 1.0.0-rc5. We should follow the typeUrl guidelines in protobuf and set it to something like this:
 types.containerd.io/opencontainers/runtime-spec/v1.0.0-rc5",1498085680,120601,5,,1133,1499292808,1499372458,5,15,5,465,438,30
+46089560,1091,type_url set correctly from container structure.,"Fixes #1052
+
+This fix, sets the ``type_url``  correctly, while reading information from ``container``, without storing changes in ``container``  struct.
+
+Signed-off-by: Kunal Kushwaha <kushwaha_kunal_v7@lab.ntt.co.jp>","Fixes #1052
+This fix, sets the type_url  correctly, while reading information from container, without storing changes in container  struct.
+Signed-off-by: Kunal Kushwaha kushwaha_kunal_v7@lab.ntt.co.jp",1498455643,2758433,1,,1133,1499292808,1499372458,5,15,5,465,438,30
 46089560,1032,Should be able to run containerd-shim inside a specified cgroup.,"Orchestrator may want to run containerd-shim inside specified cgroup to charge the resource usage to a specific user/sandbox.
 
 /cc @crosbymichael ","Orchestrator may want to run containerd-shim inside specified cgroup to charge the resource usage to a specific user/sandbox.
@@ -1743,6 +1743,25 @@ The task would need to hold a reference to its runtime to be able to emit those 
 
 cc @ehazlett ","Several events, such as RuntimeCreate actually create a task in the runtime. These should probably just be task events.
 cc @ehazlett ",1498175017,120601,5,,1158,1499814830,1499883422,3,3,1,1886,2304,17
+46089560,1161,`ctr exec --tty` hangs,"In one terminal:
+```
+sudo ./bin/dist pull docker.io/library/alpine:latest
+sudo ./bin/ctr run --tty docker.io/library/alpine:latest test
+```
+and then in another
+```
+sudo ./bin/ctr exec --tty test ash
+```
+This hangs rather than producing the expected prompt.
+
+`git bisect` has fingered f93bfb62337b645a2b3ad2a0f6b60e1d89f553a4. I expect there is a missing `s/id/container_id/` somewhere but I've not spotted it yet. /cc @crosbymichael 
+","In one terminal:
+sudo ./bin/dist pull docker.io/library/alpine:latest
+sudo ./bin/ctr run --tty docker.io/library/alpine:latest test
+and then in another
+sudo ./bin/ctr exec --tty test ash
+This hangs rather than producing the expected prompt.
+git bisect has fingered f93bfb62337b645a2b3ad2a0f6b60e1d89f553a4. I expect there is a missing s/id/container_id/ somewhere but I've not spotted it yet. /cc @crosbymichael ",1499874097,12985729,1,347599646,1165,1499879118,1499885886,5,0,3,162,39,14
 46089560,1162,`ctr exec` hangs if given command does not exist in the container,"While debugging #1161 I noticed that with:
 ```
 sudo ./bin/dist pull docker.io/library/alpine:latest
@@ -1764,25 +1783,6 @@ sudo ./bin/ctr exec --tty --exec-id bash test bash
 hangs (note that there is no bash in alpine:latest). I would expect and ENOENT type error of some sort.
 There are no logs from the containerd process end.
 I see this with current master (0600399b0d618a3d16cabc2af4f2f25d533cf1ed) but it appears to have been the case for quite a while (if not forever).",1499875283,12985729,1,347599646,1165,1499879118,1499885886,5,0,3,162,39,14
-46089560,1161,`ctr exec --tty` hangs,"In one terminal:
-```
-sudo ./bin/dist pull docker.io/library/alpine:latest
-sudo ./bin/ctr run --tty docker.io/library/alpine:latest test
-```
-and then in another
-```
-sudo ./bin/ctr exec --tty test ash
-```
-This hangs rather than producing the expected prompt.
-
-`git bisect` has fingered f93bfb62337b645a2b3ad2a0f6b60e1d89f553a4. I expect there is a missing `s/id/container_id/` somewhere but I've not spotted it yet. /cc @crosbymichael 
-","In one terminal:
-sudo ./bin/dist pull docker.io/library/alpine:latest
-sudo ./bin/ctr run --tty docker.io/library/alpine:latest test
-and then in another
-sudo ./bin/ctr exec --tty test ash
-This hangs rather than producing the expected prompt.
-git bisect has fingered f93bfb62337b645a2b3ad2a0f6b60e1d89f553a4. I expect there is a missing s/id/container_id/ somewhere but I've not spotted it yet. /cc @crosbymichael ",1499874097,12985729,1,347599646,1165,1499879118,1499885886,5,0,3,162,39,14
 46089560,652,Proposal: support multiple snapshotters on single daemon,"It would be useful to support multiple snapshotters on single daemon, because the snapshotters would have different characteristics in their performance and stability.
 
 ## Design
