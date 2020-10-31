@@ -1,5 +1,5 @@
 # GHPR: The dataset of GitHub PRs and issues
-GHPR contains data about pull requests that have fixed issues on GitHub.
+GHPR contains data about pull requests that have fixed one or more issues on GitHub.
 
 The dataset can be found at [`/ghpr.csv`](./ghpr.csv).
 A small sample of the dataset is also available at [`/ghpr-sample.csv`](./ghpr-sample.csv).
@@ -58,7 +58,6 @@ The dataset is created using [GHPR Tools](https://github.com/soroushj/ghpr-tools
 
 The [raw data](https://github.com/soroushj/ghpr-dataset-raw) for this dataset is also available,
 where you can find a JSON file for each issue and pull request present in the dataset.
-
 
 ## Data
 The current version of GHPR contains 14,384 rows.
