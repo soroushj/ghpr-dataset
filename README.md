@@ -50,9 +50,8 @@ The data is collected using the [GitHub REST API](https://docs.github.com/en/fre
 The data collection flow is as follows:
 - For repository *R*:
   - For each merged pull request *P* in *R*:
-    - If *P* links at least one issue in *R* using a [GitHub keyword](https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword):
-      - For each linked issue *I*:
-        - *(I, P)* is a member of GHPR.
+    - For each issue *I* that is linked by *P* using a [GitHub keyword](https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) and is in *R*:
+      - *(I, P)* is a member of GHPR.
 
 The dataset is created using [GHPR Tools](https://github.com/soroushj/ghpr-tools).
 
@@ -60,8 +59,8 @@ The [raw data](https://github.com/soroushj/ghpr-dataset-raw) for this dataset is
 where you can find a JSON file for each issue and pull request present in the dataset.
 
 ## Data
-The current version of GHPR contains 14,384 rows.
-The data is collected from [CNCF graduated projects](https://www.cncf.io/projects/), specifically, the following repositories:
+This version of GHPR contains 14,384 rows.
+The data is collected in October 2020 from [CNCF graduated projects](https://www.cncf.io/projects/), specifically, the following repositories:
 - [`containerd/containerd`](https://github.com/containerd/containerd)
 - [`coredns/coredns`](https://github.com/coredns/coredns)
 - [`envoyproxy/envoy`](https://github.com/envoyproxy/envoy)
@@ -75,5 +74,3 @@ The data is collected from [CNCF graduated projects](https://www.cncf.io/project
 - [`theupdateframework/specification`](https://github.com/theupdateframework/specification)
 - [`tikv/tikv`](https://github.com/tikv/tikv)
 - [`vitessio/vitess`](https://github.com/vitessio/vitess)
-
-Dataset last updated: 2020-10-28.
