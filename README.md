@@ -6,6 +6,7 @@ A small sample of the dataset is also available at [`/ghpr-sample.csv`](./ghpr-s
 
 ## Structure
 Each instance of GHPR contains data about an issue and a pull request, where the pull request has fixed the issue.
+Note that in some cases, a single pull request is linked to multiple issues or vice versa.
 
 The dataset is a CSV file with the following columns:
 - `repo_id` - Integer
@@ -59,18 +60,20 @@ The [raw data](https://github.com/soroushj/ghpr-dataset-raw) for this dataset is
 where you can find a JSON file for each issue and pull request present in the dataset.
 
 ## Data
-This version of GHPR contains 14,384 rows.
+This version of GHPR contains 14,384 instances.
 The data is collected in October 2020 from [CNCF graduated projects](https://www.cncf.io/projects/), specifically, the following repositories:
-- [`containerd/containerd`](https://github.com/containerd/containerd)
-- [`coredns/coredns`](https://github.com/coredns/coredns)
-- [`envoyproxy/envoy`](https://github.com/envoyproxy/envoy)
-- [`fluent/fluentd`](https://github.com/fluent/fluentd)
-- [`goharbor/harbor`](https://github.com/goharbor/harbor)
-- [`helm/helm`](https://github.com/helm/helm)
-- [`jaegertracing/jaeger`](https://github.com/jaegertracing/jaeger)
-- [`kubernetes/kubernetes`](https://github.com/kubernetes/kubernetes)
-- [`prometheus/prometheus`](https://github.com/prometheus/prometheus)
-- [`rook/rook`](https://github.com/rook/rook)
-- [`theupdateframework/specification`](https://github.com/theupdateframework/specification)
-- [`tikv/tikv`](https://github.com/tikv/tikv)
-- [`vitessio/vitess`](https://github.com/vitessio/vitess)
+| Repository                                                                                | # instances |
+| ----------------------------------------------------------------------------------------- | ----------- |
+| [`containerd/containerd`](https://github.com/containerd/containerd)                       | 351         |
+| [`coredns/coredns`](https://github.com/coredns/coredns)                                   | 227         |
+| [`envoyproxy/envoy`](https://github.com/envoyproxy/envoy)                                 | 1,229       |
+| [`fluent/fluentd`](https://github.com/fluent/fluentd)                                     | 161         |
+| [`goharbor/harbor`](https://github.com/goharbor/harbor)                                   | 598         |
+| [`helm/helm`](https://github.com/helm/helm)                                               | 859         |
+| [`jaegertracing/jaeger`](https://github.com/jaegertracing/jaeger)                         | 455         |
+| [`kubernetes/kubernetes`](https://github.com/kubernetes/kubernetes)                       | 8,323       |
+| [`prometheus/prometheus`](https://github.com/prometheus/prometheus)                       | 543         |
+| [`rook/rook`](https://github.com/rook/rook)                                               | 946         |
+| [`theupdateframework/specification`](https://github.com/theupdateframework/specification) | 13          |
+| [`tikv/tikv`](https://github.com/tikv/tikv)                                               | 469         |
+| [`vitessio/vitess`](https://github.com/vitessio/vitess)                                   | 210         |
