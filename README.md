@@ -63,7 +63,7 @@ where you can find a JSON file for each issue and pull request present in the da
 This version of GHPR contains 14,384 instances.
 The data is collected in October 2020 from [CNCF graduated projects](https://www.cncf.io/projects/), specifically, the following repositories:
 | Repository                                                                                | # instances |
-| ----------------------------------------------------------------------------------------- | ----------- |
+|:----------------------------------------------------------------------------------------- | -----------:|
 | [`containerd/containerd`](https://github.com/containerd/containerd)                       | 351         |
 | [`coredns/coredns`](https://github.com/coredns/coredns)                                   | 227         |
 | [`envoyproxy/envoy`](https://github.com/envoyproxy/envoy)                                 | 1,229       |
